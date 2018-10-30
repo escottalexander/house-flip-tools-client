@@ -1,0 +1,12 @@
+language: node_js
+node_js: node
+cache:
+  directories:
+  - node_modules
+deploy:
+  provider: heroku
+  api_key:
+    secure: DsQCgG1Kjox8OUFge8yH6XDj5s8ZVvseWM02xQe4iA3Ipyt+BSAS10np2bNgGmA+0ABo/88dX+5/Ec02Bu8jqtdjgfx8e2VqVL2TL7pkXpS3Vow0qSi6n3fTKKa7uG6fOrM6QR88kjODJd96w8F5BC0eCHVhCgDlHeTELnbQHBMZQdd4+ifFWnOOwhSLCzyVh9KPDKD2slATOOmCnBq2ofPNa1Nz2mYYJtbKGVrc/sJgHwgsZ3ugnhbAEa5w05NYgiX6ldJBDy5igQ8aPyPHjY5/YVii8Xf+UZNSHnoFGs5EAqAr8SOZvZwS3xeHXzQ6jE0+spKpxTAZqIboamaX/upsPJm+LyAXJLVri11SCu/Yimf0+w2PkG/tP68GVmWieQ4vxI6N3G6SSbo6vMz54py46jsvn2UEcaE1zliMF1eVnNh2Ppt4ePdrRsue3GXdn9zfGjVBiYdcEnLt5j3aXHsrAUuSTTB8/LQ2SE2i5OtBjJqVqvECmRm6EzWnnypVzfPd6fcaLmkm5VDxOe4Q4vWB0pDG3/4eZAjeMnYsnYiZ7DxE73Lc8+8k5XWcFaDYG5A9V4oQlr96K1zfpbvIZiGpjSarNd0bgVuhQ1CHRgZ9nCGDx+OskRyuJPhwL69n83P7pYK7DAyLW/ERPMqprzYmTw6WSFuzCwXHwOtxnPM=
+  app: murmuring-depths-75325
+  on:
+    repo: escottalexander/house-flip-tools-client
