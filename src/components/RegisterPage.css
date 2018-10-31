@@ -1,0 +1,26 @@
+.RegisterPage {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+label {
+    margin: 20px;
+}
+
+select {
+    margin: 10px;
+}
+
+.register {
+    margin: 20px;
+    height: 40px;
+    max-width: 100px;
+    margin: 20px auto;
+}
