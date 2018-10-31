@@ -4,19 +4,15 @@ import { connect } from 'react-redux';
 import './PropertyView.css';
 
 export class PropertyView extends React.Component {
-
     render() {
-        console.log(this.props)
+        const property = this.props.property;
         return (
             <main className="PropertyView">
-                <h2>{this.address}</h2>
+                <h2>{property.address}</h2>
                 <div className="ind-property">
                     <img className="fake-ind-prop" />
                     <div className="prop-info">
-                        <p className="short-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tellus
-                            sapien, elementum vel posuere
-                            nec, porttitor a dolor. Nulla pharetra enim eu turpis semper tempus. Donec vestibulum nulla eget ex
-                    vulputate imperdiet id lobortis tellus. Maecenas tempor semper quam, id molestie ex vulputate a.</p>
+                        <p className="short-desc">{property.description}</p>
 
                         <p>Floor Size: <span className="floor-size">1680</span> sq/ft</p>
                         <p>Year Built: <span className="year-built">1984</span></p>
@@ -46,27 +42,14 @@ export class PropertyView extends React.Component {
 
 
 const mapStateToProps = (state, props) => {
+    const thisProperty = state.properties.find(property => property.slug === props.match.params.slug)
     const property = Object.assign(
         {},
-        {
-            propertyId: null,
-            imgSrc: null,
-            address: null,
-            description: null,
-            slug: null
-        },
-        state.properties[props.match.params.slug]
+        thisProperty
     );
     return {
-        propertyId: property.propertyId,
-        imgSrc: property.imgSrc,
-        address: property.address,
-        description: property.description,
-        slug: property.slug
+        property
     };
 };
-// const mapStateToProps = state => ({
-//     properties: state.properties
-// });
-
 export default connect(mapStateToProps)(PropertyView);
+
