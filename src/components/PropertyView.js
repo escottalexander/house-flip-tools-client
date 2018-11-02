@@ -9,17 +9,22 @@ export class PropertyView extends React.Component {
         return (
             <main className="PropertyView">
                 <h2>{property.address}</h2>
+                <p className="address2">{property.city}, {property.state} {property.zip}</p>
                 <div className="ind-property">
                     <img className="fake-ind-prop" />
                     <div className="prop-info">
                         <p className="short-desc">{property.description}</p>
 
-                        <p>Floor Size: <span className="floor-size">1680</span> sq/ft</p>
-                        <p>Year Built: <span className="year-built">1984</span></p>
-                        <p>Lot Size: <span className="lot-size">1.23</span> acres</p>
-                        <p>Price: $<span className="price">159,000</span></p>
-                        <p>Stories: <span className="stories">2</span></p>
-                        <p>Bedrooms: <span className="beds">3</span></p>
+                        <p>Floor Size: <span className="floor-size">{property.floorSize.size}</span> {property.floorSize.unit}</p>
+                        <p>Year Built: <span className="year-built">{property.yearBuilt}</span></p>
+                        <p>Lot Size: <span className="lot-size">{property.lotSize.size}</span> {property.lotSize.unit}</p>
+                        <p>Price: $<span className="price">{property.price}</span></p>
+                        <p>Stories: <span className="stories">{property.stories}</span></p>
+                        <p>Bedrooms: <span className="beds">{property.bedrooms}</span></p>
+                        <p>Basement: <span className="basement">{property.basement}</span></p>
+                        <p>Foundation: <span className="foundation">{property.foundationType}</span></p>
+                        <p>Exterior: <span className="exterior">{property.exteriorMaterial}</span></p>
+                        <p>Roof Material: <span className="roof">{property.roofType}</span></p>
 
                         <h3>Planned Repairs and Improvements</h3>
                         <p>New Flooring: <span className="flooring">1680</span> sq/ft X $3.50 sq/ft = <span className="flooring-cost">$5880</span></p>
