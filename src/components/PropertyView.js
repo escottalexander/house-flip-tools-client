@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import './PropertyView.css';
 
 export class PropertyView extends React.Component {
+    constructor(props) {
+        super(props)
+    }
     render() {
         const property = this.props.property;
         return (
@@ -38,7 +41,7 @@ export class PropertyView extends React.Component {
                         <h3 className="projection">With these factors, this flip will cost you $189,734.44 total with $30,734.44 in
                             repairs. By our calculations, you need to make $270,000 on this property for it to be worth your
                     while.</h3>
-                        <button>Edit Property</button>
+                        <button><Link to={`/dashboard/${property.slug}/edit`}>Edit Property</Link></button>
                     </div>
                 </div>
             </main>

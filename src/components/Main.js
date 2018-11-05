@@ -8,6 +8,7 @@ import LoginPage from './LoginPage';
 import RegisterPage from './RegisterPage';
 import Dashboard from './Dashboard';
 import PropertyView from './PropertyView';
+import EditProperty from './EditProperty';
 
 export default class Main extends Component {
   render() {
@@ -21,6 +22,7 @@ export default class Main extends Component {
           <Route exact path="/register" component={RegisterPage} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/dashboard/:slug" component={PropertyView} />
+          <Route exact path="/dashboard/:slug/edit" component={EditProperty} />
           <Footer />
         </div>
       </Router>

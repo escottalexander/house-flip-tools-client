@@ -10,7 +10,7 @@ export default function Property(props) {
             <div className="prop-info">
                 <h3 className="address">{props.data.address}</h3>
                 <p className="short-desc">{props.data.description}</p>
-                <button><Link to={`dashboard/${props.data.slug}`}>View Property</Link></button>
+                <button><Link to={`/dashboard/${props.data.slug}`}>View Property</Link></button>
             </div>
         </div>
     );
