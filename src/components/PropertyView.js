@@ -21,10 +21,12 @@ export class PropertyView extends React.Component {
                         <p>Price: $<span className="price">{property.price}</span></p>
                         <p>Stories: <span className="stories">{property.stories}</span></p>
                         <p>Bedrooms: <span className="beds">{property.bedrooms}</span></p>
+                        <p>Baths: <span className="baths">{property.bathrooms}</span></p>
                         <p>Basement: <span className="basement">{property.basement}</span></p>
                         <p>Foundation: <span className="foundation">{property.foundationType}</span></p>
                         <p>Exterior: <span className="exterior">{property.exteriorMaterial}</span></p>
                         <p>Roof Material: <span className="roof">{property.roofType}</span></p>
+                        <p>Roof Size: <span className="roof-size">{property.roofSize.size}</span> {property.roofSize.unit}</p>
 
                         <h3>Planned Repairs and Improvements</h3>
                         <p>New Flooring: <span className="flooring">1680</span> sq/ft X $3.50 sq/ft = <span className="flooring-cost">$5880</span></p>
