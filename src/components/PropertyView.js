@@ -48,13 +48,12 @@ export class PropertyView extends React.Component {
             </main>
         );
     }
-
 };
 
 
 const mapStateToProps = (state, props) => {
-    const thisProperty = state.properties.find(property => property.slug === props.match.params.slug)
-    const prettify = state.prettify;
+    const thisProperty = state.reducer.properties.find(property => property.slug === props.match.params.slug)
+    const prettify = state.reducer.prettify;
     const property = Object.assign(
         {},
         thisProperty

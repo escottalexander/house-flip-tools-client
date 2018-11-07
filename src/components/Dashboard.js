@@ -24,7 +24,7 @@ export class Dashboard extends React.Component {
 };
 
 const mapStateToProps = state => ({
-    properties: state.properties
+    properties: state.reducer.properties
 });
 
 export default connect(mapStateToProps)(Dashboard);

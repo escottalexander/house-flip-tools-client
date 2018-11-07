@@ -66,7 +66,15 @@ const initialState = {
 };
 
 export const reducer = (state = initialState, action) => {
-    if (action.type === actions.ADD_LIST) {
+    if (action.type === actions.LOAD) {
+        console.log(action)
+        return Object.assign({}, state, {
+
+            editPropertyData: action.data,
+
+        });
+    }
+    else if (action.type === actions.ADD_LIST) {
         return Object.assign({}, state, {
             lists: [...state.lists, {
                 title: action.title,

@@ -34,7 +34,7 @@ export class Improvement extends React.Component {
 
 const mapStateToProps = (state, props) => {
     const thisImprovement = props.data;
-    const prettify = state.prettify;
+    const prettify = state.reducer.prettify;
     const improvement = Object.assign(
         {},
         thisImprovement

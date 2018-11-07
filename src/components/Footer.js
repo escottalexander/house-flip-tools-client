@@ -24,7 +24,7 @@ export class Footer extends React.Component {
 };
 
 const mapStateToProps = state => ({
-    slugify: state.slugify
+    slugify: state.reducer.slugify
 });
 
 export default connect(mapStateToProps)(Footer);
