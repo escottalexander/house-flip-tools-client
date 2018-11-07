@@ -38,11 +38,11 @@ export class PropertyView extends React.Component {
                         <p>Exterior: {property.exteriorMaterial}</p>
                         <p>Roof Material: {property.roofType}</p>
                         <p>Additional Notes: {property.notes}</p>
+                        <button><Link to={`/dashboard/${property.slug}/edit`}>Edit Property Details</Link></button>
                         <h3>Planned Repairs and Improvements</h3>
                         {improvements}
                         <h3 className="projection">This house flip will cost you ${prettify(totalCost)} total with ${prettify(improvementCosts)} in
                             repairs.</h3>
-                        <button><Link to={`/dashboard/${property.slug}/edit`}>Edit Property</Link></button>
                     </div>
                 </div>
             </main>

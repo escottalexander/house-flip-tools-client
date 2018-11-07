@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './Improvement.css';
-
+import { editImprovement } from '../actions'
 
 export class Improvement extends React.Component {
     constructor(props) {
@@ -22,7 +22,7 @@ export class Improvement extends React.Component {
         } else {
             return (
                 <div className="improvement">
-                    <p>{data.name} - Cost: ${prettify(data.cost)} <button>Edit</button><button>Delete</button></p>
+                    <p>{data.name} - Cost: ${prettify(data.cost)} <button onClick={() => this.props.dispatch(this.props.editImprovement(this.props.data))}>Edit</button><button>Delete</button></p>
                 </div>
             )
         }
@@ -41,7 +41,8 @@ const mapStateToProps = (state, props) => {
     );
     return {
         improvement,
-        prettify
+        prettify,
+        editImprovement
     };
 };
 export default connect(mapStateToProps)(Improvement);
