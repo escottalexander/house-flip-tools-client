@@ -219,5 +219,36 @@ export const reducer = (state = initialState, action) => {
             properties: [...sortedProperties]
         });
     }
+    /// DELETE PROPERTY
+    if (action.type === actions.DELETE_PROPERTY) {
+        const properties = state.properties.filter((property) => {
+            if (property.propertyId !== action.propertyId) {
+                return property;
+            }
+        })
+        const allProperties = Object.assign([...properties]);
+        const sortedProperties = allProperties.sort((a, b) => a.propertyId - b.propertyId)
+        return Object.assign({}, state, {
+            properties: [...sortedProperties]
+        });
+    }
+    /// DELETE IMPROVEMENT
+    if (action.type === actions.DELETE_IMPROVEMENT) {
+        const property = Object.assign({}, state.properties.find(property => property.propertyId === action.improvement.propertyId));
+        const improvements = property.improvements.filter(item => item.id !== action.improvement.id);
+        property.improvements = improvements;
+        const properties = state.properties.filter((property) => {
+            if (property.propertyId !== action.improvement.propertyId) {
+                return property;
+            }
+        })
+        const allProperties = Object.assign([...properties, property]);
+        const sortedProperties = allProperties.sort((a, b) => a.propertyId - b.propertyId)
+        return Object.assign({}, state, {
+            properties: [...sortedProperties]
+        });
+    }
+
+
     return state;
 };

@@ -5,21 +5,30 @@ import './Improvement.css';
 import { EditImprovementElement } from './EditImprovement';
 import { required, nonEmpty, email } from '../validators';
 import { reduxForm, Field, SubmissionError, focus } from 'redux-form';
-import { editImprovement, loadData as loadAccount, clearEditData } from '../actions'
+import { editImprovement, loadData as loadAccount, clearEditData, deleteImprovement } from '../actions'
 
 
 export class Improvement extends React.Component {
     constructor(props) {
         super(props)
-        //console.log(props)
     }
+    deleteImprovement() {
+        this.props.dispatch(this.props.deleteImprovement(this.props.improvement))
+    }
+
     render() {
         const prettify = this.props.prettify;
         const data = this.props.data;
         //console.log(data)
         return (
             <div className="improvement">
-                <p>{data.name} - Cost: ${prettify(data.cost)} <button><Link to={`/dashboard/${this.props.slug}/improvement/${data.id}`}>Edit</Link></button><button>Delete</button></p>
+                <p>{data.name} - Cost: ${prettify(data.cost)}
+                    <button><Link to={`/dashboard/${this.props.slug}/improvement/${data.id}`}>Edit</Link>
+                    </button>
+                    <button
+                        onClick={() => this.deleteImprovement()}>
+                        Delete
+                    </button></p>
             </div>
         )
     }
@@ -40,6 +49,7 @@ const mapStateToProps = (state, props) => {
         slug,
         prettify,
         editImprovement,
+        deleteImprovement,
         clearEditData,
         initialValues: state.reducer.editPropertyData
     };

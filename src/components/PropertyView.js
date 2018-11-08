@@ -3,11 +3,16 @@ import { BrowserRouter as Router, Route, Redirect, Link } from 'react-router-dom
 import { connect } from 'react-redux';
 import Improvement from './Improvement';
 import './PropertyView.css';
+import { deleteProperty } from '../actions';
 
 export class PropertyView extends React.Component {
     constructor(props) {
         super(props)
     }
+    deleteProperty() {
+        this.props.dispatch(this.props.deleteProperty(this.props.property.propertyId))
+    }
+
     render() {
         const prettify = this.props.prettify;
         const property = this.props.property;
@@ -39,6 +44,7 @@ export class PropertyView extends React.Component {
                         <p>Roof Material: {property.roofType}</p>
                         <p>Additional Notes: {property.notes}</p>
                         <button><Link to={`/dashboard/${property.slug}/edit`}>Edit Property Details</Link></button>
+                        <button onClick={(event) => this.deleteProperty()}><Link to={`/dashboard`}>Delete Property</Link></button>
                         <h3>Planned Repairs and Improvements</h3>
                         {improvements}
                         <button><Link to={`/dashboard/${property.slug}/add-improvement`}>Add Improvement</Link></button>
@@ -60,6 +66,7 @@ const mapStateToProps = (state, props) => {
         thisProperty
     );
     return {
+        deleteProperty,
         property,
         prettify
     };

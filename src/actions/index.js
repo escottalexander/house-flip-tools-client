@@ -23,9 +23,22 @@ export const addProperty = property => ({
     type: ADD_PROPERTY,
     property
 });
+
 export const ADD_IMPROVEMENT = 'ADD_IMPROVEMENT';
 export const addImprovement = improvement => ({
     type: ADD_IMPROVEMENT,
+    improvement
+});
+
+export const DELETE_PROPERTY = 'DELETE_PROPERTY';
+export const deleteProperty = propertyId => ({
+    type: DELETE_PROPERTY,
+    propertyId
+});
+
+export const DELETE_IMPROVEMENT = 'DELETE_IMPROVEMENT';
+export const deleteImprovement = improvement => ({
+    type: DELETE_IMPROVEMENT,
     improvement
 });
 
