@@ -3,7 +3,7 @@ import * as actions from '../actions';
 const initialState = {
     properties: [
         {
-            propertyId: 125,
+            propertyId: 123,
             slug: "103-cherry-tree-lane",
             imgSrc: "",
             address: "103 Cherry Tree lane",
@@ -26,30 +26,27 @@ const initialState = {
             stories: 2,
             improvements: [
                 {
-                    propertyId: 125,
+                    propertyId: 123,
                     id: 12345,
                     name: "new porch",
-                    cost: 10000,
-                    edit: false
+                    cost: 10000
                 },
                 {
-                    propertyId: 125,
+                    propertyId: 123,
                     id: 12346,
                     name: "new paint",
-                    cost: 10000,
-                    edit: false
+                    cost: 10000
                 },
                 {
-                    propertyId: 125,
+                    propertyId: 123,
                     id: 12347,
                     name: "new roof",
-                    cost: 10000,
-                    edit: false
+                    cost: 10000
                 }
             ]
         },
         {
-            propertyId: 123,
+            propertyId: 125,
             slug: "17-cherry-tree-lane",
             imgSrc: "",
             address: "17 Cherry Tree lane",
@@ -72,25 +69,22 @@ const initialState = {
             stories: 2,
             improvements: [
                 {
-                    propertyId: 123,
+                    propertyId: 125,
                     id: 12345,
                     name: "new porch",
-                    cost: 10000,
-                    edit: false
+                    cost: 10000
                 },
                 {
-                    propertyId: 123,
+                    propertyId: 125,
                     id: 12346,
                     name: "new paint",
-                    cost: 10000,
-                    edit: false
+                    cost: 10000
                 },
                 {
-                    propertyId: 123,
+                    propertyId: 125,
                     id: 12347,
                     name: "new roof",
-                    cost: 10000,
-                    edit: false
+                    cost: 10000
                 }
             ]
         }
@@ -121,13 +115,16 @@ export const reducer = (state = initialState, action) => {
         });
     }
     else if (action.type === actions.SAVE_PROPERTY) {
+        console.log("saving...")
         let properties = state.properties.filter((property) => {
             if (property.propertyId !== action.property.propertyId) {
                 return property;
             }
         })
+        const allProperties = Object.assign([...properties, action.property]);
+        const sortedProperties = allProperties.sort((a, b) => a.propertyId - b.propertyId)
         return Object.assign({}, state, {
-            properties: [...properties, action.property]
+            properties: [...sortedProperties]
         });
     }
     else if (action.type === actions.CLEAR_EDIT_DATA) {
@@ -135,20 +132,22 @@ export const reducer = (state = initialState, action) => {
             editPropertyData: null
         });
     }
-    else if (action.type === actions.EDIT_IMPROVEMENT) {
-        console.log(action)
+    else if (action.type === actions.SAVE_IMPROVEMENT) {
         let properties = state.properties.filter((property) => {
             if (property.propertyId !== action.improvement.propertyId) {
                 return property;
             }
         })
-        let property = state.properties.find(property => property.propertyId === action.improvement.propertyId);
-        let improvements = property.improvements.filter(item => item.id !== action.improvement.id);
-        let improvement = property.improvements.find(item => item.id === action.improvement.id);
-        improvement.edit = true;
-        property.improvements = Object.assign([...improvements, improvement]);
+        const property = Object.assign({}, state.properties.find(property => property.propertyId === action.improvement.propertyId));
+        const improvements = property.improvements.filter(item => item.id !== action.improvement.id);
+        //let improvement = property.improvements.find(item => item.id === action.improvement.id);
+        const allImprovements = Object.assign([...improvements, action.improvement]);
+        const sortedImprovements = allImprovements.slice().sort((a, b) => a.id - b.id)
+        property.improvements = sortedImprovements;
+        const allProperties = Object.assign([...properties, property]);
+        const sortedProperties = allProperties.sort((a, b) => a.propertyId - b.propertyId)
         return Object.assign({}, state, {
-            properties: [...properties, property]
+            properties: [...sortedProperties]
 
         });
     }

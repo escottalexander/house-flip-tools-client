@@ -9,6 +9,7 @@ import RegisterPage from './RegisterPage';
 import Dashboard from './Dashboard';
 import PropertyView from './PropertyView';
 import EditProperty from './EditProperty';
+import EditImprovementElement from './EditImprovement';
 
 export default class Main extends Component {
   render() {
@@ -23,6 +24,7 @@ export default class Main extends Component {
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/dashboard/:slug" component={PropertyView} />
           <Route exact path="/dashboard/:slug/edit" component={EditProperty} />
+          <Route exact path="/dashboard/:slug/improvement/:id" component={EditImprovementElement} />
           <Footer />
         </div>
       </Router>

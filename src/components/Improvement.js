@@ -2,32 +2,26 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './Improvement.css';
-import { editImprovement } from '../actions'
+import { EditImprovementElement } from './EditImprovement';
+import { required, nonEmpty, email } from '../validators';
+import { reduxForm, Field, SubmissionError, focus } from 'redux-form';
+import { editImprovement, loadData as loadAccount, clearEditData } from '../actions'
+
 
 export class Improvement extends React.Component {
     constructor(props) {
         super(props)
-
+        //console.log(props)
     }
-
     render() {
         const prettify = this.props.prettify;
         const data = this.props.data;
-        if (data.edit) {
-            return (
-                <div className="improvement">
-                    <label>Improvement: <input className="improvementName" value={data.name} /></label><label>Cost: $<input className="cost" value={data.cost} /></label><button>Save</button><button>Delete</button>
-                </div>
-            )
-        } else {
-            return (
-                <div className="improvement">
-                    <p>{data.name} - Cost: ${prettify(data.cost)} <button onClick={() => this.props.dispatch(this.props.editImprovement(this.props.data))}>Edit</button><button>Delete</button></p>
-                </div>
-            )
-        }
-
-
+        //console.log(data)
+        return (
+            <div className="improvement">
+                <p>{data.name} - Cost: ${prettify(data.cost)} <button><Link to={`/dashboard/${this.props.slug}/improvement/${data.id}`}>Edit</Link></button><button>Delete</button></p>
+            </div>
+        )
     }
 
 };
@@ -35,14 +29,20 @@ export class Improvement extends React.Component {
 const mapStateToProps = (state, props) => {
     const thisImprovement = props.data;
     const prettify = state.reducer.prettify;
+    const slug = state.reducer.properties.find(property => property.propertyId === props.data.propertyId).slug;
     const improvement = Object.assign(
         {},
         thisImprovement
     );
     return {
+        loadData: loadAccount,
         improvement,
+        slug,
         prettify,
-        editImprovement
+        editImprovement,
+        clearEditData,
+        initialValues: state.reducer.editPropertyData
     };
 };
+
 export default connect(mapStateToProps)(Improvement);

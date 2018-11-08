@@ -13,7 +13,7 @@ export class PropertyView extends React.Component {
         const property = this.props.property;
         let improvementCosts = 0;
         const improvements = property.improvements.map((item, index) => {
-            improvementCosts += item.cost;
+            improvementCosts += parseInt(item.cost);
             return <Improvement key={index} data={item} />
         }
         );

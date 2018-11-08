@@ -12,6 +12,12 @@ export const saveProperty = property => ({
     property
 });
 
+export const SAVE_IMPROVEMENT = 'SAVE_IMPROVEMENT';
+export const saveImprovement = improvement => ({
+    type: SAVE_IMPROVEMENT,
+    improvement
+});
+
 export const CLEAR_EDIT_DATA = 'CLEAR_EDIT_DATA';
 export const clearEditData = () => ({
     type: CLEAR_EDIT_DATA,
