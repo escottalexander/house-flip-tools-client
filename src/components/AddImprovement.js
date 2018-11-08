@@ -1,32 +1,22 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import './EditImprovement.css';
+import './AddImprovement.css';
 import Input from './Input';
-import { required, nonEmpty, email } from '../validators';
-import { reduxForm, Field, SubmissionError, focus } from 'redux-form';
-import { editImprovement, loadData as loadAccount, clearEditData, saveImprovement } from '../actions'
+import { required } from '../validators';
+import { reduxForm, Field, focus } from 'redux-form';
+import { addImprovement } from '../actions'
 
 
-export class EditImprovement extends React.Component {
+export class AddImprovement extends React.Component {
     constructor(props) {
         super(props)
     }
-    componentDidMount() {
-        this.props.dispatch(this.props.loadData(this.props.improvement))
-    }
-    componentWillUnmount() {
-        this.props.dispatch(this.props.clearEditData())
-    }
     onSubmit(values) {
-        //console.log(values)
+        values.propertyId = this.props.property.propertyId;
         window.history.back();
-        return this.props.dispatch(this.props.saveImprovement(values))
+        return this.props.dispatch(this.props.addImprovement(values))
     }
-    //editImprovement() {
-    // this.props.dispatch(this.props.editImprovement(this.props.data))
-    //this.props.dispatch(this.props.loadData(this.props.improvement))
-    //}
     render() {
         let successMessage;
         if (this.props.submitSucceeded) {
@@ -80,26 +70,21 @@ export class EditImprovement extends React.Component {
 };
 
 const mapStateToProps = (state, props) => {
-    const thisProperty = state.reducer.properties.find(property => property.slug === props.match.params.slug);
-    const thisImprovement = thisProperty.improvements.find(improvement => improvement.id === parseInt(props.match.params.id));
-    const improvement = Object.assign(
+    const thisProperty = state.reducer.properties.find(property => property.slug === props.match.params.slug)
+    const property = Object.assign(
         {},
-        thisImprovement
+        thisProperty
     );
     return {
-        loadData: loadAccount,
-        improvement,
-        editImprovement,
-        saveImprovement,
-        clearEditData,
-        initialValues: state.reducer.editPropertyData
+        property,
+        addImprovement
     };
 };
 const formLink = reduxForm({
-    form: 'editImprovement',
-    onSubmitFail: (errors, dispatch) =>
-        dispatch(focus('editImprovement', Object.keys(errors)[0]))
+    form: 'addImprovement',
+    // onSubmitFail: (errors, dispatch) =>
+    //     dispatch(focus('addImprovement', Object.keys(errors)[0]))
 });
-EditImprovement = formLink(EditImprovement);
+AddImprovement = formLink(AddImprovement);
 
-export default connect(mapStateToProps)(EditImprovement);
+export default connect(mapStateToProps)(AddImprovement);

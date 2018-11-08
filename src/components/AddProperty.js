@@ -1,26 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './EditProperty.css';
-import { reduxForm, Field, focus } from 'redux-form';
+import { reduxForm, Field, SubmissionError, focus } from 'redux-form';
 import Input from './Input';
 import { required, nonEmpty, email } from '../validators';
-import { loadData as loadAccount, saveProperty, clearEditData } from '../actions'
+import { addProperty } from '../actions'
 
 
-export class EditProperty extends React.Component {
+export class AddProperty extends React.Component {
     constructor(props) {
         super(props)
     }
     componentDidMount() {
-        this.props.dispatch(this.props.loadData(this.props.property))
+        // this.props.dispatch(this.props.loadData(this.props.property))
     }
     componentWillUnmount() {
-        this.props.dispatch(this.props.clearEditData())
+        // this.props.dispatch(this.props.clearEditData())
     }
 
     onSubmit(values) {
         window.history.back();
-        return this.props.dispatch(this.props.saveProperty(values));
+        return this.props.dispatch(this.props.addProperty(values));
     }
 
     render() {
@@ -58,21 +58,21 @@ export class EditProperty extends React.Component {
                     type="text"
                     component={Input}
                     label="City:"
-                    validate={[required, nonEmpty]}
+                    validate={[]}
                 />
                 <Field
                     name="state"
                     type="text"
                     component={Input}
                     label="State:"
-                    validate={[required, nonEmpty]}
+                    validate={[]}
                 />
                 <Field
                     name="zip"
                     type="text"
                     component={Input}
                     label="Zip Code:"
-                    validate={[required, nonEmpty]}
+                    validate={[]}
                 />
                 <Field
                     name="description"
@@ -175,26 +175,17 @@ export class EditProperty extends React.Component {
 };
 
 const mapStateToProps = (state, props) => {
-    const thisProperty = state.reducer.properties.find(property => property.slug === props.match.params.slug)
-    const property = Object.assign(
-        {},
-        thisProperty
-    );
     return {
-        property,
-        loadData: loadAccount,
-        saveProperty,
-        clearEditData,
-        initialValues: state.reducer.editPropertyData
+        addProperty
     };
 };
 
 const formLink = reduxForm({
-    form: 'editProperty',
-    onSubmitFail: (errors, dispatch) =>
-        dispatch(focus('editProperty', Object.keys(errors)[0]))
+    form: 'addProperty',
+    // onSubmitFail: (errors, dispatch) =>
+    //     dispatch(focus('addProperty', Object.keys(errors)[0]))
 });
 
-EditProperty = formLink(EditProperty)
+AddProperty = formLink(AddProperty)
 
-export default connect(mapStateToProps)(EditProperty);
+export default connect(mapStateToProps)(AddProperty);

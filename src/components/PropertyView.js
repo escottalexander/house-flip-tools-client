@@ -41,6 +41,7 @@ export class PropertyView extends React.Component {
                         <button><Link to={`/dashboard/${property.slug}/edit`}>Edit Property Details</Link></button>
                         <h3>Planned Repairs and Improvements</h3>
                         {improvements}
+                        <button><Link to={`/dashboard/${property.slug}/add-improvement`}>Add Improvement</Link></button>
                         <h3 className="projection">This house flip will cost you ${prettify(totalCost)} total with ${prettify(improvementCosts)} in
                             repairs.</h3>
                     </div>

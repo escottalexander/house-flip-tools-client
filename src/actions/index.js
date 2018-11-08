@@ -18,6 +18,17 @@ export const saveImprovement = improvement => ({
     improvement
 });
 
+export const ADD_PROPERTY = 'ADD_PROPERTY';
+export const addProperty = property => ({
+    type: ADD_PROPERTY,
+    property
+});
+export const ADD_IMPROVEMENT = 'ADD_IMPROVEMENT';
+export const addImprovement = improvement => ({
+    type: ADD_IMPROVEMENT,
+    improvement
+});
+
 export const CLEAR_EDIT_DATA = 'CLEAR_EDIT_DATA';
 export const clearEditData = () => ({
     type: CLEAR_EDIT_DATA,

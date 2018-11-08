@@ -109,13 +109,14 @@ const initialState = {
 };
 
 export const reducer = (state = initialState, action) => {
+    /// LOAD EDIT DATA
     if (action.type === actions.LOAD) {
         return Object.assign({}, state, {
             editPropertyData: action.data,
         });
     }
+    /// SAVE PROPERTY
     else if (action.type === actions.SAVE_PROPERTY) {
-        console.log("saving...")
         let properties = state.properties.filter((property) => {
             if (property.propertyId !== action.property.propertyId) {
                 return property;
@@ -127,11 +128,13 @@ export const reducer = (state = initialState, action) => {
             properties: [...sortedProperties]
         });
     }
+    /// CLEAR EDIT DATA
     else if (action.type === actions.CLEAR_EDIT_DATA) {
         return Object.assign({}, state, {
             editPropertyData: null
         });
     }
+    /// SAVE IMPROVEMENT
     else if (action.type === actions.SAVE_IMPROVEMENT) {
         let properties = state.properties.filter((property) => {
             if (property.propertyId !== action.improvement.propertyId) {
@@ -140,7 +143,6 @@ export const reducer = (state = initialState, action) => {
         })
         const property = Object.assign({}, state.properties.find(property => property.propertyId === action.improvement.propertyId));
         const improvements = property.improvements.filter(item => item.id !== action.improvement.id);
-        //let improvement = property.improvements.find(item => item.id === action.improvement.id);
         const allImprovements = Object.assign([...improvements, action.improvement]);
         const sortedImprovements = allImprovements.slice().sort((a, b) => a.id - b.id)
         property.improvements = sortedImprovements;
@@ -151,20 +153,70 @@ export const reducer = (state = initialState, action) => {
 
         });
     }
-    else if (action.type === actions.ADD_CARD) {
-        let lists = state.lists.map((list, index) => {
-            if (index !== action.listIndex) {
-                return list;
+    /// ADD PROPERTY
+    else if (action.type === actions.ADD_PROPERTY) {
+        const properties = state.properties.filter((property) => {
+            if (property.propertyId !== action.property.propertyId) {
+                return property;
             }
-            return Object.assign({}, list, {
-                cards: [...list.cards, {
-                    text: action.text
-                }]
-            });
-        });
-
+        })
+        const propertyId = Math.floor((Math.random() * 100) * (100 * Math.random()) * (100 * Math.random()));
+        const template = {
+            propertyId: propertyId,
+            slug: initialState.slugify(action.property.address),
+            imgSrc: "",
+            address: "",
+            city: "",
+            state: "",
+            zip: "",
+            description: "",
+            price: "",
+            projectedValue: "",
+            yearBuilt: "",
+            roofType: "",
+            foundationType: "",
+            exteriorMaterial: "",
+            basement: "",
+            notes: "",
+            floorSize: "",
+            lotSize: "",
+            bedrooms: "",
+            bathrooms: "",
+            stories: "",
+            improvements: []
+        }
+        const finalProperty = Object.assign({}, template, action.property);
+        const allProperties = Object.assign([...properties, finalProperty]);
+        const sortedProperties = allProperties.sort((a, b) => a.propertyId - b.propertyId)
         return Object.assign({}, state, {
-            lists
+            properties: [...sortedProperties]
+        });
+    }
+    /// ADD IMPROVEMENT
+    else if (action.type === actions.ADD_IMPROVEMENT) {
+        const property = Object.assign({}, state.properties.find(property => property.propertyId === action.improvement.propertyId));
+        const properties = state.properties.filter((property) => {
+            if (property.propertyId !== action.improvement.propertyId) {
+                return property;
+            }
+        })
+        const improvementId = Math.floor((Math.random() * 100) * (100 * Math.random()) * (100 * Math.random()));
+        const template = {
+            propertyId: action.improvement.propertyId,
+            id: improvementId,
+            name: "",
+            cost: ""
+        }
+        const finalImprovement = Object.assign({}, template, action.improvement);
+        const improvements = property.improvements;
+        const allImprovements = Object.assign([...improvements, finalImprovement]);
+        const sortedImprovements = allImprovements.slice().sort((a, b) => a.id - b.id)
+        property.improvements = sortedImprovements;
+        const allProperties = Object.assign([...properties, property]);
+        const sortedProperties = allProperties.sort((a, b) => a.propertyId - b.propertyId)
+        console.log(sortedProperties)
+        return Object.assign({}, state, {
+            properties: [...sortedProperties]
         });
     }
     return state;

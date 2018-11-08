@@ -17,7 +17,7 @@ export class Dashboard extends React.Component {
 
                 <h2>Properties</h2>
                 {properties}
-                <button>Add Property</button>
+                <button><Link to='/dashboard/add'>Add Property</Link></button>
             </main>
         );
     }
