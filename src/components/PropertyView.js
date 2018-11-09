@@ -1,14 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Improvement from './Improvement';
 import './PropertyView.css';
 import { deleteProperty } from '../actions';
 
 export class PropertyView extends React.Component {
-    constructor(props) {
-        super(props)
-    }
     deleteProperty() {
         this.props.dispatch(this.props.deleteProperty(this.props.property.propertyId))
     }

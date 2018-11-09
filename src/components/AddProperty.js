@@ -1,23 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './EditProperty.css';
-import { reduxForm, Field, SubmissionError, focus } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 import Input from './Input';
-import { required, nonEmpty, email } from '../validators';
+import { required } from '../validators';
 import { addProperty } from '../actions'
 
 
 export class AddProperty extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-    componentDidMount() {
-        // this.props.dispatch(this.props.loadData(this.props.property))
-    }
-    componentWillUnmount() {
-        // this.props.dispatch(this.props.clearEditData())
-    }
-
     onSubmit(values) {
         window.history.back();
         return this.props.dispatch(this.props.addProperty(values));

@@ -1,6 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Redirect, Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import './Property.css';
 
 export default function Property(props) {

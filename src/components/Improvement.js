@@ -1,17 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './Improvement.css';
-import { EditImprovementElement } from './EditImprovement';
-import { required, nonEmpty, email } from '../validators';
-import { reduxForm, Field, SubmissionError, focus } from 'redux-form';
-import { editImprovement, loadData as loadAccount, clearEditData, deleteImprovement } from '../actions'
+import { deleteImprovement } from '../actions'
 
 
 export class Improvement extends React.Component {
-    constructor(props) {
-        super(props)
-    }
     deleteImprovement() {
         this.props.dispatch(this.props.deleteImprovement(this.props.improvement))
     }
@@ -19,7 +13,6 @@ export class Improvement extends React.Component {
     render() {
         const prettify = this.props.prettify;
         const data = this.props.data;
-        //console.log(data)
         return (
             <div className="improvement">
                 <p>{data.name} - Cost: ${prettify(data.cost)}
@@ -44,13 +37,10 @@ const mapStateToProps = (state, props) => {
         thisImprovement
     );
     return {
-        loadData: loadAccount,
         improvement,
         slug,
         prettify,
-        editImprovement,
         deleteImprovement,
-        clearEditData,
         initialValues: state.reducer.editPropertyData
     };
 };

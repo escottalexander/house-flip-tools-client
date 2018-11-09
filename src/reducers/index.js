@@ -116,7 +116,7 @@ export const reducer = (state = initialState, action) => {
         });
     }
     /// SAVE PROPERTY
-    else if (action.type === actions.SAVE_PROPERTY) {
+    if (action.type === actions.SAVE_PROPERTY) {
         let properties = state.properties.filter((property) => {
             if (property.propertyId !== action.property.propertyId) {
                 return property;
@@ -129,13 +129,13 @@ export const reducer = (state = initialState, action) => {
         });
     }
     /// CLEAR EDIT DATA
-    else if (action.type === actions.CLEAR_EDIT_DATA) {
+    if (action.type === actions.CLEAR_EDIT_DATA) {
         return Object.assign({}, state, {
             editPropertyData: null
         });
     }
     /// SAVE IMPROVEMENT
-    else if (action.type === actions.SAVE_IMPROVEMENT) {
+    if (action.type === actions.SAVE_IMPROVEMENT) {
         let properties = state.properties.filter((property) => {
             if (property.propertyId !== action.improvement.propertyId) {
                 return property;
@@ -154,7 +154,7 @@ export const reducer = (state = initialState, action) => {
         });
     }
     /// ADD PROPERTY
-    else if (action.type === actions.ADD_PROPERTY) {
+    if (action.type === actions.ADD_PROPERTY) {
         const properties = state.properties.filter((property) => {
             if (property.propertyId !== action.property.propertyId) {
                 return property;
@@ -193,7 +193,7 @@ export const reducer = (state = initialState, action) => {
         });
     }
     /// ADD IMPROVEMENT
-    else if (action.type === actions.ADD_IMPROVEMENT) {
+    if (action.type === actions.ADD_IMPROVEMENT) {
         const property = Object.assign({}, state.properties.find(property => property.propertyId === action.improvement.propertyId));
         const properties = state.properties.filter((property) => {
             if (property.propertyId !== action.improvement.propertyId) {
@@ -249,6 +249,10 @@ export const reducer = (state = initialState, action) => {
         });
     }
 
+    /// REGISTER USER
+    if (action.type === actions.REGISTER_USER) {
+        console.log("user registered")
+    }
 
     return state;
 };

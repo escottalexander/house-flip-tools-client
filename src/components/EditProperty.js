@@ -3,14 +3,11 @@ import { connect } from 'react-redux';
 import './EditProperty.css';
 import { reduxForm, Field, focus } from 'redux-form';
 import Input from './Input';
-import { required, nonEmpty, email } from '../validators';
+import { required, nonEmpty } from '../validators';
 import { loadData as loadAccount, saveProperty, clearEditData } from '../actions'
 
 
 export class EditProperty extends React.Component {
-    constructor(props) {
-        super(props)
-    }
     componentDidMount() {
         this.props.dispatch(this.props.loadData(this.props.property))
     }
@@ -195,6 +192,4 @@ const formLink = reduxForm({
         dispatch(focus('editProperty', Object.keys(errors)[0]))
 });
 
-EditProperty = formLink(EditProperty)
-
-export default connect(mapStateToProps)(EditProperty);
+export default connect(mapStateToProps)(formLink(EditProperty));

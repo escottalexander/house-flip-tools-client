@@ -53,10 +53,10 @@ export const editImprovement = improvement => ({
     improvement
 });
 
-export const ADD_LIST = 'ADD_LIST';
-export const addList = title => ({
-    type: ADD_LIST,
-    title
+export const REGISTER_USER = 'REGISTER_USER';
+export const registerUser = userData => ({
+    type: REGISTER_USER,
+    userData
 });
 
 export const ADD_CARD = 'ADD_CARD';

@@ -1,17 +1,13 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './AddImprovement.css';
 import Input from './Input';
 import { required } from '../validators';
-import { reduxForm, Field, focus } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 import { addImprovement } from '../actions'
 
 
 export class AddImprovement extends React.Component {
-    constructor(props) {
-        super(props)
-    }
     onSubmit(values) {
         values.propertyId = this.props.property.propertyId;
         window.history.back();

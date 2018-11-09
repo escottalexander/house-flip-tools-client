@@ -1,17 +1,13 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './EditImprovement.css';
 import Input from './Input';
-import { required, nonEmpty, email } from '../validators';
-import { reduxForm, Field, SubmissionError, focus } from 'redux-form';
+import { required } from '../validators';
+import { reduxForm, Field, focus } from 'redux-form';
 import { editImprovement, loadData as loadAccount, clearEditData, saveImprovement } from '../actions'
 
 
 export class EditImprovement extends React.Component {
-    constructor(props) {
-        super(props)
-    }
     componentDidMount() {
         this.props.dispatch(this.props.loadData(this.props.improvement))
     }
@@ -19,14 +15,9 @@ export class EditImprovement extends React.Component {
         this.props.dispatch(this.props.clearEditData())
     }
     onSubmit(values) {
-        //console.log(values)
         window.history.back();
         return this.props.dispatch(this.props.saveImprovement(values))
     }
-    //editImprovement() {
-    // this.props.dispatch(this.props.editImprovement(this.props.data))
-    //this.props.dispatch(this.props.loadData(this.props.improvement))
-    //}
     render() {
         let successMessage;
         if (this.props.submitSucceeded) {
