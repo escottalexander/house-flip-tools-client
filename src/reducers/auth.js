@@ -16,10 +16,7 @@ const initialState = {
 };
 
 export const authReducer = (state = initialState, action) => {
-
-    /// REGISTER USER
     if (action.type === actions.REGISTER_USER) {
-        console.log("user registered")
     }
     else if (action.type === SET_AUTH_TOKEN) {
         return Object.assign({}, state, {
