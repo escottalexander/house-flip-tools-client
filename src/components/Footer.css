@@ -1,0 +1,23 @@
+.Footer ul {
+    list-style: none;
+    background-color: #444;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+.Footer li {
+    line-height: 20px;
+    height: 20px;
+}
+
+
+@media screen and (min-width: 600px) {
+    .Footer li {
+        border-bottom: none;
+        height: 50px;
+        margin: 20px;
+        display: inline-block;
+        margin-right: -4px;
+    }
+}
