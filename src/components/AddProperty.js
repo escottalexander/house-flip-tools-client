@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './EditProperty.css';
+import './AddProperty.css';
 import { reduxForm, Field } from 'redux-form';
 import Input from './Input';
 import { required } from '../validators';
