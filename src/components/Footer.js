@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import './Footer.css';
 
 export function Footer(props) {
-    const links = ["About This Site", "View The Source Code", "Privacy Policy"];
+    const links = ["View The Source Code"];
     const footerButtons = links.map((item, index) => {
-        return <li key={index} className={item}><Link to={props.slugify(item)}>{item}</Link></li>
+        return <li key={index} className={item}><a href="https://github.com/escottalexander/house-flip-tools-client">{item}</a></li>
     })
     return (
         <footer className="Footer">
