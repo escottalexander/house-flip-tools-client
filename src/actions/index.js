@@ -58,10 +58,3 @@ export const registerUser = userData => ({
     type: REGISTER_USER,
     userData
 });
-
-export const ADD_CARD = 'ADD_CARD';
-export const addCard = (text, listIndex) => ({
-    type: ADD_CARD,
-    text,
-    listIndex
-});
