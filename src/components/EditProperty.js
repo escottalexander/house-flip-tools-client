@@ -73,7 +73,7 @@ export class EditProperty extends React.Component {
                     validate={[required, nonEmpty]}
                 />
                 <Field
-                    name="image"
+                    name="imgSrc"
                     type="file"
                     component={FileInput}
                     label="Upload Image:"

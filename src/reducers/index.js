@@ -1,11 +1,12 @@
 import * as actions from '../actions';
+import { image1, image2 } from '../initialStateImages'
 
 const initialState = {
     properties: [
         {
             propertyId: 123,
             slug: "103-cherry-tree-lane",
-            imgSrc: "",
+            imgSrc: image1,
             address: "103 Cherry Tree lane",
             city: "Woodstock",
             state: "GA",
@@ -48,7 +49,7 @@ const initialState = {
         {
             propertyId: 125,
             slug: "17-cherry-tree-lane",
-            imgSrc: "",
+            imgSrc: image2,
             address: "17 Cherry Tree lane",
             city: "Woodstock",
             state: "GA",

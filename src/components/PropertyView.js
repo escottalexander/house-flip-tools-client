@@ -25,7 +25,7 @@ export class PropertyView extends React.Component {
                 <h2>{property.address}</h2>
                 <p className="address2">{property.city}, {property.state} {property.zip}</p>
                 <div className="ind-property">
-                    <img className="fake-ind-prop" />
+                    <img className="fake-ind-prop" src={property.imgSrc} />
                     <div className="prop-info">
                         <p className="short-desc">{property.description}</p>
                         <p>Floor Size: {prettify(property.floorSize)} ft²</p>
