@@ -1,0 +1,55 @@
+import React from 'react'
+
+export default class FileInput extends React.Component {
+    constructor(props) {
+        super(props)
+        this.onChange = this.onChange.bind(this)
+    }
+
+    onChange(e) {
+        console.log(e.target.files[0])
+        const file = e.target.files;
+        if (!file) {
+            return
+        }
+        const fileReader = new FileReader();
+        fileReader.addEventListener('load', () => {
+            this.props.input.value = fileReader.result
+        })
+        fileReader.readAsDataURL(file[0])
+        const { input: { onChange } } = this.props;
+        onChange(this.props.input.value)
+
+    }
+
+    render() {
+        let error;
+        if (this.props.meta.touched && this.props.meta.error) {
+            error = <div className="form-error">{this.props.meta.error}</div>;
+        }
+
+        let warning;
+        if (this.props.meta.touched && this.props.meta.warning) {
+            warning = (
+                <div className="form-warning">{this.props.meta.warning}</div>
+            );
+        }
+        const { input: { value } } = this.props
+        const { input, label, required, meta, } = this.props
+        return (
+            <div className="form-input">
+                <label htmlFor={this.props.input.name}>
+                    {this.props.label}
+                    {error}
+                    {warning}
+                </label>
+                <input
+                    type='file'
+                    onChange={this.onChange}
+                    accept=".jpeg, .png , .jpg"
+                />
+            </div>
+
+        )
+    }
+}

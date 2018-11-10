@@ -4,8 +4,11 @@ export default class Input extends React.Component {
     componentDidUpdate(prevProps) {
         if (!prevProps.meta.active && this.props.meta.active) {
             this.input.focus();
+
         }
+
     }
+
     render() {
         const Element = this.props.element || 'input';
 

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import './Main.css';
 import Navbar from './Navbar';
@@ -17,7 +17,7 @@ export default class Main extends Component {
   render() {
     return (
       <Router>
-        <div className="Main">
+        <Fragment>
           <Navbar />
           <Switch>
             <Route exact path="/" render={() => <Redirect to="/home" />} />
@@ -32,7 +32,7 @@ export default class Main extends Component {
             <Route exact path="/dashboard/:slug/improvement/:id" component={EditImprovement} />
           </Switch>
           <Footer />
-        </div>
+        </Fragment>
       </Router>
     );
   }

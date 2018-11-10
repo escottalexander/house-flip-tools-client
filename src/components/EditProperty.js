@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './EditProperty.css';
 import { reduxForm, Field, focus } from 'redux-form';
+import FileInput from './FileInput'
 import Input from './Input';
 import { required, nonEmpty } from '../validators';
 import { loadData as loadAccount, saveProperty, clearEditData } from '../actions'
@@ -70,6 +71,13 @@ export class EditProperty extends React.Component {
                     component={Input}
                     label="Zip Code:"
                     validate={[required, nonEmpty]}
+                />
+                <Field
+                    name="image"
+                    type="file"
+                    component={FileInput}
+                    label="Upload Image:"
+                    validate={[]}
                 />
                 <Field
                     name="description"
