@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './AddProperty.css';
 import { reduxForm, Field } from 'redux-form';
+import FileInput from './FileInput'
 import Input from './Input';
 import { required } from '../validators';
 import { addProperty } from '../actions'
@@ -62,6 +63,13 @@ export class AddProperty extends React.Component {
                     type="text"
                     component={Input}
                     label="Zip Code:"
+                    validate={[]}
+                />
+                <Field
+                    name="imgSrc"
+                    type="file"
+                    component={FileInput}
+                    label="Upload Image:"
                     validate={[]}
                 />
                 <Field
