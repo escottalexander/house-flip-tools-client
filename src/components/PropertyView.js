@@ -1,16 +1,27 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Improvement from './Improvement';
 import './PropertyView.css';
-import { deleteProperty } from '../actions';
+import { deleteProperty, getUserProperties } from '../actions';
 
 export class PropertyView extends React.Component {
+    componentDidMount() {
+        if (this.props.user === null) {
+            return window.location.replace("/login")
+        } else {
+            this.props.dispatch(this.props.getUserProperties(this.props.user))
+        }
+    }
     deleteProperty() {
-        this.props.dispatch(this.props.deleteProperty(this.props.property.propertyId))
+        this.props.dispatch(this.props.deleteProperty(this.props.property))
+            .then(() => window.history.back());
     }
 
     render() {
+        if (!this.props.property.propertyId) {
+            return <Redirect to='/dashboard' />
+        }
         const prettify = this.props.prettify;
         const property = this.props.property;
         let improvementCosts = 0;
@@ -41,7 +52,7 @@ export class PropertyView extends React.Component {
                         <p>Roof Material: {property.roofType}</p>
                         <p>Additional Notes: {property.notes}</p>
                         <button><Link to={`/dashboard/${property.slug}/edit`}>Edit Property Details</Link></button>
-                        <button onClick={(event) => this.deleteProperty()}><Link to={`/dashboard`}>Delete Property</Link></button>
+                        <button onClick={(event) => this.deleteProperty()}>Delete Property</button>
                         <h3>Planned Repairs and Improvements</h3>
                         {improvements}
                         <button><Link to={`/dashboard/${property.slug}/add-improvement`}>Add Improvement</Link></button>
@@ -58,11 +69,14 @@ export class PropertyView extends React.Component {
 const mapStateToProps = (state, props) => {
     const thisProperty = state.reducer.properties.find(property => property.slug === props.match.params.slug)
     const prettify = state.reducer.prettify;
+    const user = state.auth.currentUser;
     const property = Object.assign(
         {},
         thisProperty
     );
     return {
+        user,
+        getUserProperties,
         deleteProperty,
         property,
         prettify

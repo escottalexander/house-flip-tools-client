@@ -5,6 +5,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import LandingPage from './LandingPage';
 import LoginPage from './LoginPage';
+import Logout from './Logout';
 import RegisterPage from './RegisterPage';
 import Dashboard from './Dashboard';
 import PropertyView from './PropertyView';
@@ -23,6 +24,7 @@ export default class Main extends Component {
             <Route exact path="/" render={() => <Redirect to="/home" />} />
             <Route exact path="/home" component={LandingPage} />
             <Route exact path="/login" component={LoginPage} />
+            <Route exact path="/logout" component={Logout} />
             <Route exact path="/register" component={RegisterPage} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/dashboard/add" component={AddProperty} />
