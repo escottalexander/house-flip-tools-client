@@ -1,4 +1,3 @@
-import * as actions from '../actions';
 import {
     SET_AUTH_TOKEN,
     CLEAR_AUTH,
@@ -16,9 +15,7 @@ const initialState = {
 };
 
 export const authReducer = (state = initialState, action) => {
-    if (action.type === actions.REGISTER_USER) {
-    }
-    else if (action.type === SET_AUTH_TOKEN) {
+    if (action.type === SET_AUTH_TOKEN) {
         return Object.assign({}, state, {
             authToken: action.authToken
         });

@@ -4,7 +4,7 @@ import './EditImprovement.css';
 import Input from './Input';
 import { required } from '../validators';
 import { reduxForm, Field, focus } from 'redux-form';
-import { editImprovement, loadData as loadAccount, clearEditData, saveImprovement } from '../actions'
+import { loadData as loadAccount, clearEditData, saveImprovement } from '../actions'
 
 
 export class EditImprovement extends React.Component {
@@ -15,8 +15,9 @@ export class EditImprovement extends React.Component {
         this.props.dispatch(this.props.clearEditData())
     }
     onSubmit(values) {
-        window.history.back();
+        values.slug = this.props.thisProperty.slug;
         return this.props.dispatch(this.props.saveImprovement(values))
+            .then(() => window.history.back());
     }
     render() {
         let successMessage;
@@ -78,9 +79,10 @@ const mapStateToProps = (state, props) => {
         thisImprovement
     );
     return {
+        thisProperty,
         loadData: loadAccount,
         improvement,
-        editImprovement,
+        // editImprovement,
         saveImprovement,
         clearEditData,
         initialValues: state.reducer.editPropertyData

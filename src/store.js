@@ -7,6 +7,7 @@ import { loadAuthToken } from './local-storage';
 import { setAuthToken, refreshAuthToken } from './actions/auth';
 
 
+
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
@@ -21,7 +22,9 @@ const authToken = loadAuthToken();
 if (authToken) {
     const token = authToken;
     store.dispatch(setAuthToken(token));
-    store.dispatch(refreshAuthToken());
+    store.dispatch(refreshAuthToken())
+
+
 }
 
 export default store;

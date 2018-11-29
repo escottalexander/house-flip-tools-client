@@ -5,7 +5,7 @@ import { reduxForm, Field, focus } from 'redux-form';
 import Input from './Input';
 import { Link, Redirect } from 'react-router-dom';
 import { required, nonEmpty, email, matches, length, isTrimmed } from '../validators';
-import { registerUser } from '../actions'
+import { registerUser } from '../actions/users'
 
 
 export function RegisterPage(props) {
