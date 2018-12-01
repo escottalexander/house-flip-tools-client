@@ -6,7 +6,7 @@ import './Navbar.css';
 export function Navbar(props) {
     const links = props.loggedIn ? ["Home", "Logout", "Dashboard"] : ["Home", "Login", "Register"];
     const navButtons = links.map((item, index) => {
-        return <li key={index} className={item}><NavLink to={`/${props.slugify(item)}`} activeClassName="selected">{item}</NavLink></li>
+        return <li key={`${index}-${item}`} className={item}><NavLink to={`/${props.slugify(item)}`} activeClassName="selected">{item}</NavLink></li>
     });
     return (
         <nav className="Navbar">

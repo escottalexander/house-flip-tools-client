@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+
 }
 
 *:before,
@@ -9,7 +10,6 @@
 
 html {
   height: 100%;
-  position: relative;
 }
 
 body {
@@ -20,8 +20,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
   height: 100%;
-  position: relative;
 }
 
 code {
@@ -29,13 +29,14 @@ code {
     monospace;
 }
 
-.root {
+#root {
+  height: 100%;
   display: flex;
   flex-direction: column;
-  min-height: 100%;
 }
 
 
 main {
-  flex: 1;
+  flex: 1 0 auto;
+
 }

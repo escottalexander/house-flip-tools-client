@@ -21,9 +21,6 @@
     color: #1277E1;
 }
 
-/* .Footer {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    right: 0;
-} */
+.Footer {
+    flex-shrink: 0;
+}

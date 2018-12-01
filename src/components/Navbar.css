@@ -11,7 +11,7 @@
     margin: 0;
 }
 
-label {
+.Navbar label {
     display: block;
     cursor: pointer;
     background: url('./menu-alt-256.png') no-repeat left center;

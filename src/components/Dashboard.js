@@ -16,7 +16,7 @@ export class Dashboard extends React.Component {
     render() {
 
         const properties = this.props.properties.map((item, index) => {
-            return <Property key={index} data={item} />
+            return <Property key={item.slug} data={item} />
         })
         return (
             <main className="Dashboard">
