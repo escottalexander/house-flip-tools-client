@@ -1,0 +1,15 @@
+.LandingPage {
+    text-align: center;
+}
+
+.header {
+    margin: 0px;
+    padding: 20px 0px;
+    color: white;
+    background-color: #1277E1;
+}
+
+a {
+    text-decoration: none;
+
+}

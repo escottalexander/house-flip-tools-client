@@ -1,23 +1,29 @@
 .Footer ul {
     list-style: none;
-    background-color: #444;
+    background-color: #0A0A0A;
     text-align: center;
     padding: 0;
     margin: 0;
 }
 
 .Footer li {
-    line-height: 20px;
-    height: 20px;
+    height: 50px;
+    margin: 20px;
+    display: inline-block;
+    margin-right: -4px;
 }
 
-
-@media screen and (min-width: 600px) {
-    .Footer li {
-        border-bottom: none;
-        height: 50px;
-        margin: 20px;
-        display: inline-block;
-        margin-right: -4px;
-    }
+.Footer a {
+    color: white;
 }
+
+.Footer a:hover {
+    color: #1277E1;
+}
+
+/* .Footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+} */

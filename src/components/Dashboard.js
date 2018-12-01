@@ -21,7 +21,7 @@ export class Dashboard extends React.Component {
         return (
             <main className="Dashboard">
 
-                <h2>Properties</h2>
+                <h2 className="header">Properties</h2>
                 {properties}
                 <button><Link to='/dashboard/add'>Add Property</Link></button>
             </main>

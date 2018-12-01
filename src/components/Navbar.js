@@ -10,6 +10,10 @@ export function Navbar(props) {
     });
     return (
         <nav className="Navbar">
+            <input type="checkbox" id="menu"></input>
+            <label htmlFor="menu">
+                Menu
+            </label>
             <ul>
                 {navButtons}
             </ul>

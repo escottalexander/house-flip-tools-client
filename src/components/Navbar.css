@@ -1,18 +1,52 @@
 .Navbar {
     width: 100%;
+    border-bottom: #888 1px solid;
 }
 
 .Navbar ul {
     list-style: none;
-    background-color: #444;
+    background-color: white;
     text-align: center;
     padding: 0;
     margin: 0;
 }
 
+label {
+    display: block;
+    cursor: pointer;
+    background: url('./menu-alt-256.png') no-repeat left center;
+    padding: 2px 0 2px 50px;
+}
+
+a {
+    padding: 12px 10px;
+    margin: 0px;
+    color: #0A0A0A;
+}
+
+a:hover {
+    color: white;
+}
+
+nav ul {
+    max-height: 0;
+    overflow: hidden;
+    font-family: 'Oswald', sans-serif;
+    padding: 0 0 0 50px;
+}
+
+input:checked~ul {
+    max-height: 100%;
+}
+
+input#menu {
+    display: none;
+}
+
 .selected {
     background-color: black;
     color: white;
+    cursor: default;
 }
 
 .Navbar li {
@@ -27,6 +61,19 @@
 }
 
 @media screen and (min-width: 600px) {
+    .Navbar label {
+        display: none;
+    }
+
+    nav ul {
+        max-height: 100%;
+    }
+
+    a {
+        padding: 20px 10px;
+        margin: 0px;
+    }
+
     .Navbar li:first-of-type {
         float: left;
     }
@@ -42,6 +89,7 @@
         overflow: auto;
         width: 100%;
         margin: 0 auto;
+        border-bottom: #888 solid 1px;
     }
 
 }

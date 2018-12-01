@@ -1,3 +1,17 @@
+* {
+  box-sizing: border-box;
+}
+
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  position: relative;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -6,9 +20,22 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  position: relative;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+
+main {
+  flex: 1;
 }
