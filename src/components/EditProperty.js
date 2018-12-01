@@ -17,8 +17,8 @@ export class EditProperty extends React.Component {
     }
 
     onSubmit(values) {
-        window.history.back();
-        return this.props.dispatch(this.props.saveProperty(values));
+        return this.props.dispatch(this.props.saveProperty(values))
+            .then(() => window.history.back())
     }
 
     render() {
