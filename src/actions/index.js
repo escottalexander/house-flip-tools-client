@@ -5,7 +5,15 @@ let token = localStorage.getItem('authToken');
 
 
 
-
+// EXAMPLE ACCOUNT INITIALIZE
+export const EXAMPLE_ACCOUNT_INITIALIZED = 'EXAMPLE_ACCOUNT_INITIALIZED';
+export const exampleAccountInitialized = () => ({
+    type: EXAMPLE_ACCOUNT_INITIALIZED,
+});
+export const EXAMPLE_ACCOUNT_UNINITIALIZED = 'EXAMPLE_ACCOUNT_UNINITIALIZED';
+export const exampleAccountUninitialized = () => ({
+    type: EXAMPLE_ACCOUNT_UNINITIALIZED,
+});
 
 // AUTOFILL FORM FIELDS
 export const LOAD = "LOAD";
@@ -137,7 +145,6 @@ export const deleteProperty = (property) => dispatch => {
             }
         }
         )
-            // .then(res => res.json())
             .then(() => {
                 dispatch(deletePropertySuccess()
                 )

@@ -4,6 +4,7 @@ const initialState = {
     properties: [],
     loading: false,
     error: null,
+    exampleReady: false,
     slugify(text) {
         return text
             .toString()
@@ -207,6 +208,17 @@ export const reducer = (state = initialState, action) => {
         return Object.assign({}, state, {
             loading: false,
             error: action.error
+        });
+    }
+    // EXAMPLE ACCOUNT INITIALIZED
+    if (action.type === actions.EXAMPLE_ACCOUNT_INITIALIZED) {
+        return Object.assign({}, state, {
+            exampleReady: true
+        });
+    }
+    if (action.type === actions.EXAMPLE_ACCOUNT_UNINITIALIZED) {
+        return Object.assign({}, state, {
+            exampleReady: false
         });
     }
 
