@@ -2,9 +2,30 @@
     text-align: center;
 }
 
+.properties {
+    padding: 5%;
+}
+
 .header {
     margin: 0px;
     padding: 20px 0px;
     color: white;
     background-color: #1277E1;
+}
+
+.Dashboard button {
+
+    border-radius: 10px;
+    border: 2px solid #0B3142;
+    background-color: #1277E1;
+}
+
+.Dashboard button:hover {
+    background-image: linear-gradient(to top, #1277E1, #0B3142)
+}
+
+button a {
+    color: #FCFDFF;
+    font-size: 16px;
+    text-align: center;
 }

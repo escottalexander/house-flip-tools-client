@@ -36,7 +36,7 @@ export class EditImprovement extends React.Component {
             );
         }
         return (
-            <form
+            <form className="EditImprovement"
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
                 )}>

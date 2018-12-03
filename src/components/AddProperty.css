@@ -1,0 +1,7 @@
+.AddProperty {
+
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    text-align: center;
+}

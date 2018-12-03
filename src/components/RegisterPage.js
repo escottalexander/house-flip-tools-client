@@ -28,8 +28,8 @@ export function RegisterPage(props) {
         );
     }
     return (
-        <div>
-            <h2>Register</h2>
+        <div className="RegisterPage">
+            <h2 className="header">Register</h2>
             <form
                 onSubmit={props.handleSubmit(values =>
                     props.dispatch(registerUser(values))

@@ -39,9 +39,11 @@ export class EditProperty extends React.Component {
         }
         return (
             <form
+                className="EditProperty"
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
                 )}>
+                <h2 className="header">Edit Property Details</h2>
                 {successMessage}
                 {errorMessage}
                 <Field
