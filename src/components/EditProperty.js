@@ -17,8 +17,8 @@ export class EditProperty extends React.Component {
     }
 
     onSubmit(values) {
-        window.history.back();
-        return this.props.dispatch(this.props.saveProperty(values));
+        return this.props.dispatch(this.props.saveProperty(values))
+            .then(() => window.history.back())
     }
 
     render() {
@@ -39,9 +39,11 @@ export class EditProperty extends React.Component {
         }
         return (
             <form
+                className="EditProperty"
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
                 )}>
+                <h2 className="header">Edit Property Details</h2>
                 {successMessage}
                 {errorMessage}
                 <Field

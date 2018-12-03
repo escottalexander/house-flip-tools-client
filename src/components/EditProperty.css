@@ -4,23 +4,33 @@
     text-align: center;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.header {
+    text-align: center;
 }
 
 label {
-    margin: 20px;
+    font-weight: 500;
 }
 
-select {
-    margin: 10px;
+.form-error {
+    color: red;
+    font-size: 12px;
 }
 
-button {
-    margin: 20px;
+form button {
     height: 40px;
     max-width: 100px;
     margin: 20px auto;
+}
+
+.form-input {
+    text-align: center;
+    max-width: 247.5px;
+    margin: 10px 0px;
+}
+
+@media screen and (min-width: 320px) {
+    .form-input {
+        max-width: 100%;
+    }
 }

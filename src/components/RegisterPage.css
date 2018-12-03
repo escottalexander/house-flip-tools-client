@@ -1,13 +1,18 @@
 .RegisterPage {
-    display: flex;
-    flex-direction: column;
     text-align: center;
+    flex: 1 0 auto;
 }
 
-form {
+.RegisterPage form {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
+}
+
+.RegisterPage a:hover {
+    color: black;
+    text-decoration: black;
+    text-decoration-line: underline;
 }
 
 label {

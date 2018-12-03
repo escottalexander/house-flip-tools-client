@@ -32,9 +32,11 @@ export class AddImprovement extends React.Component {
         }
         return (
             <form
+                className="AddImprovement"
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
                 )}>
+                <h2 className="header">Add Improvement</h2>
                 {successMessage}
                 {errorMessage}
                 <Field

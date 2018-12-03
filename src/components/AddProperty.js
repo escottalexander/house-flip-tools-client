@@ -32,9 +32,11 @@ export class AddProperty extends React.Component {
         }
         return (
             <form
+                className="AddProperty"
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
                 )}>
+                <h2 className="header">Add Property</h2>
                 {successMessage}
                 {errorMessage}
                 <Field

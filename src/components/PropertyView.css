@@ -1,0 +1,32 @@
+ .PropertyView {
+     text-align: center;
+     padding: 10px;
+ }
+
+ p {
+     text-align: left;
+ }
+
+ .address2 {
+     text-align: center;
+ }
+
+ button {
+     margin: 15px;
+     padding: 10px;
+     color: #FCFDFF;
+     font-size: 16px;
+     border-radius: 10px;
+     border: 2px solid #0B3142;
+     background-color: #1277E1;
+ }
+
+ button:hover {
+     background-image: linear-gradient(to top, #1277E1, #0B3142)
+ }
+
+ button a {
+     color: #FCFDFF;
+     font-size: 16px;
+     text-align: center;
+ }

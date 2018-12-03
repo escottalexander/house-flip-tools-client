@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
-import './Main.css';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import LandingPage from './LandingPage';

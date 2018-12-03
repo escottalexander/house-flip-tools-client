@@ -16,14 +16,16 @@ export class Dashboard extends React.Component {
     render() {
 
         const properties = this.props.properties.map((item, index) => {
-            return <Property key={index} data={item} />
+            return <Property key={item.slug} data={item} />
         })
         return (
             <main className="Dashboard">
 
-                <h2>Properties</h2>
-                {properties}
-                <button><Link to='/dashboard/add'>Add Property</Link></button>
+                <h2 className="header">Properties</h2>
+                <div className="properties">
+                    {properties}
+                    <button><Link to='/dashboard/add'>Add Property</Link></button>
+                </div>
             </main>
         );
     }
