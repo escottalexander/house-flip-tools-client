@@ -10,8 +10,9 @@ import { addImprovement } from '../actions'
 export class AddImprovement extends React.Component {
     onSubmit(values) {
         values.propertyId = this.props.property.propertyId;
-        window.history.back();
+        values.slug = this.props.property.slug;
         return this.props.dispatch(this.props.addImprovement(values))
+            .then(() => window.history.back());
     }
     render() {
         let successMessage;
@@ -31,9 +32,11 @@ export class AddImprovement extends React.Component {
         }
         return (
             <form
+                className="AddImprovement"
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
                 )}>
+                <h2 className="header">Add Improvement</h2>
                 {successMessage}
                 {errorMessage}
                 <Field

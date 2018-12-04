@@ -7,7 +7,9 @@ import { deleteImprovement } from '../actions'
 
 export class Improvement extends React.Component {
     deleteImprovement() {
-        this.props.dispatch(this.props.deleteImprovement(this.props.improvement))
+        const data = this.props.improvement;
+        data.slug = this.props.slug;
+        this.props.dispatch(this.props.deleteImprovement(data))
     }
 
     render() {
@@ -31,7 +33,7 @@ export class Improvement extends React.Component {
 const mapStateToProps = (state, props) => {
     const thisImprovement = props.data;
     const prettify = state.reducer.prettify;
-    const slug = state.reducer.properties.find(property => property.propertyId === props.data.propertyId).slug;
+    const slug = state.reducer.properties.find(property => property.propertyId === props.data.property_id).slug;
     const improvement = Object.assign(
         {},
         thisImprovement

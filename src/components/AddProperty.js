@@ -10,8 +10,8 @@ import { addProperty } from '../actions'
 
 export class AddProperty extends React.Component {
     onSubmit(values) {
-        window.history.back();
-        return this.props.dispatch(this.props.addProperty(values));
+        return this.props.dispatch(this.props.addProperty(values))
+            .then(() => window.history.back());
     }
 
     render() {
@@ -32,9 +32,11 @@ export class AddProperty extends React.Component {
         }
         return (
             <form
+                className="AddProperty"
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
                 )}>
+                <h2 className="header">Add Property</h2>
                 {successMessage}
                 {errorMessage}
                 <Field

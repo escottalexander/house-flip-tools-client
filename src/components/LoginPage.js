@@ -21,32 +21,36 @@ export function LoginPage(props) {
         );
     }
     return (
-        <form
-            className="login-form"
-            onSubmit={props.handleSubmit(values =>
-                props.dispatch(login(values.username, values.password)
-                ))}>
-            {error}
-            <label htmlFor="username">Username</label>
-            <Field
-                component={Input}
-                type="text"
-                name="username"
-                id="username"
-                validate={[required, nonEmpty]}
-            />
-            <label htmlFor="password">Password</label>
-            <Field
-                component={Input}
-                type="password"
-                name="password"
-                id="password"
-                validate={[required, nonEmpty]}
-            />
-            <button disabled={props.pristine || props.submitting}>
-                Log in
+        <div className="LoginPage">
+            <h2 className="header">Log In</h2>
+            <form
+                className="login-form"
+                onSubmit={props.handleSubmit(values =>
+                    props.dispatch(login(values.username, values.password)
+                    ))}>
+
+                {error}
+                <Field
+                    component={Input}
+                    type="text"
+                    name="username"
+                    label="Username"
+                    id="username"
+                    validate={[required, nonEmpty]}
+                />
+                <Field
+                    component={Input}
+                    type="password"
+                    name="password"
+                    label="Password"
+                    id="password"
+                    validate={[required, nonEmpty]}
+                />
+                <button disabled={props.pristine || props.submitting}>
+                    Log in
                 </button>
-        </form>
+            </form>
+        </div>
     );
 };
 

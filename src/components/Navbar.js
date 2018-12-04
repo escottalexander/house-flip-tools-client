@@ -4,12 +4,16 @@ import { connect } from 'react-redux';
 import './Navbar.css';
 
 export function Navbar(props) {
-    const links = ["Home", "Login", "Register"];
+    const links = props.loggedIn ? ["Home", "Logout", "Dashboard"] : ["Home", "Login", "Register"];
     const navButtons = links.map((item, index) => {
-        return <li key={index} className={item}><NavLink to={`/${props.slugify(item)}`} activeClassName="selected">{item}</NavLink></li>
+        return <li key={`${index}-${item}`} className={item}><NavLink to={`/${props.slugify(item)}`} activeClassName="selected">{item}</NavLink></li>
     });
     return (
         <nav className="Navbar">
+            <input type="checkbox" id="menu"></input>
+            <label htmlFor="menu">
+                Menu
+            </label>
             <ul>
                 {navButtons}
             </ul>
@@ -18,6 +22,7 @@ export function Navbar(props) {
 };
 
 const mapStateToProps = state => ({
+    loggedIn: state.auth.currentUser !== null,
     slugify: state.reducer.slugify
 });
 

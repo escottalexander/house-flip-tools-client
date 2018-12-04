@@ -7,7 +7,7 @@ export default class FileInput extends React.Component {
     }
 
     onChange(e) {
-        console.log(e.target.files[0])
+        //console.log(e.target.files[0])
         const file = e.target.files[0];
         if (!file) {
             console.log("!file")
@@ -16,9 +16,9 @@ export default class FileInput extends React.Component {
         const { input: { onChange } } = this.props;
         const fileReader = new FileReader();
         fileReader.addEventListener('load', () => {
-            console.log(fileReader.result)
+            // console.log(fileReader.result)
             this.props.input.value = fileReader.result
-            console.log(this.props.input.value)
+            // console.log(this.props.input.value)
             onChange(this.props.input.value)
         })
         fileReader.readAsDataURL(file)

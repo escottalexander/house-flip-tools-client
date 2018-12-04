@@ -5,7 +5,7 @@ import { reduxForm, Field, focus } from 'redux-form';
 import Input from './Input';
 import { Link, Redirect } from 'react-router-dom';
 import { required, nonEmpty, email, matches, length, isTrimmed } from '../validators';
-import { registerUser } from '../actions'
+import { registerUser } from '../actions/users'
 
 
 export function RegisterPage(props) {
@@ -28,8 +28,8 @@ export function RegisterPage(props) {
         );
     }
     return (
-        <div>
-            <h2>Register</h2>
+        <div className="RegisterPage">
+            <h2 className="header">Register</h2>
             <form
                 onSubmit={props.handleSubmit(values =>
                     props.dispatch(registerUser(values))

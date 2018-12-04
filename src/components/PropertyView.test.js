@@ -7,7 +7,7 @@ describe('<PropertyView />', () => {
 
     it('renders without crashing', () => {
         const data = { improvements: [] };
-        shallow(<PropertyView property={data} prettify={() => 'any value'} />)
+        shallow(<PropertyView property={data} prettify={() => 'any value'} getUserProperties={() => 'any value'} dispatch={() => 'any value'} />)
     });
 
 

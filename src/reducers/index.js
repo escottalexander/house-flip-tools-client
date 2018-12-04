@@ -1,95 +1,10 @@
 import * as actions from '../actions';
-import { image1, image2 } from '../initialStateImages'
 
 const initialState = {
-    properties: [
-        {
-            propertyId: 123,
-            slug: "103-cherry-tree-lane",
-            imgSrc: image1,
-            address: "103 Cherry Tree lane",
-            city: "Woodstock",
-            state: "GA",
-            zip: "30189",
-            description: "Newly renovated 3 bedroom, 1 1/2 bath with new kitchen, all new appliances, flooring, carpet, paint, light fixtures, ceiling fans in all bedrooms. New deck with private back yard with a beautiful creek running that give a perfect tranquil relaxing yard to sit back and enjoy. (Agents Protected). Contact: 770-316-8580",
-            price: 159000,
-            projectedValue: 250000,
-            yearBuilt: 1984,
-            roofType: "composite",
-            foundationType: "footing",
-            exteriorMaterial: "wood",
-            basement: "unfinished",
-            notes: "",
-            floorSize: 1680,
-            lotSize: 1.23,
-            bedrooms: 3,
-            bathrooms: 1.5,
-            stories: 2,
-            improvements: [
-                {
-                    propertyId: 123,
-                    id: 12345,
-                    name: "new porch",
-                    cost: 10000
-                },
-                {
-                    propertyId: 123,
-                    id: 12346,
-                    name: "new paint",
-                    cost: 10000
-                },
-                {
-                    propertyId: 123,
-                    id: 12347,
-                    name: "new roof",
-                    cost: 10000
-                }
-            ]
-        },
-        {
-            propertyId: 125,
-            slug: "17-cherry-tree-lane",
-            imgSrc: image2,
-            address: "17 Cherry Tree lane",
-            city: "Woodstock",
-            state: "GA",
-            zip: "30189",
-            description: "Newly renovated 3 bedroom, 1 1/2 bath with new kitchen, all new appliances, flooring, carpet, paint, light fixtures, ceiling fans in all bedrooms. New deck with private back yard with a beautiful creek running that give a perfect tranquil relaxing yard to sit back and enjoy. (Agents Protected). Contact: 770-316-8580",
-            price: 159000,
-            projectedValue: 250000,
-            yearBuilt: 1984,
-            roofType: "composite",
-            foundationType: "footing",
-            exteriorMaterial: "wood",
-            basement: "unfinished",
-            notes: "",
-            floorSize: 1680,
-            lotSize: 1.23,
-            bedrooms: 3,
-            bathrooms: 1.5,
-            stories: 2,
-            improvements: [
-                {
-                    propertyId: 125,
-                    id: 12345,
-                    name: "new porch",
-                    cost: 10000
-                },
-                {
-                    propertyId: 125,
-                    id: 12346,
-                    name: "new paint",
-                    cost: 10000
-                },
-                {
-                    propertyId: 125,
-                    id: 12347,
-                    name: "new roof",
-                    cost: 10000
-                }
-            ]
-        }
-    ],
+    properties: [],
+    loading: false,
+    error: null,
+    exampleReady: false,
     slugify(text) {
         return text
             .toString()
@@ -97,36 +12,65 @@ const initialState = {
             .replace(/[\s\W-]+/g, '-');
     },
     prettify(number) {
-        let numArr = number.toString().split("");
-        let prettyNumber = [];
-        for (let index = 0; index < numArr.length; index++) {
-            if ((numArr.length - index) % 3 === 0 && index !== 0) {
-                prettyNumber.push(",");
+        if (number) {
+            let numArr = number.toString().split("");
+            let prettyNumber = [];
+            for (let index = 0; index < numArr.length; index++) {
+                if ((numArr.length - index) % 3 === 0 && index !== 0) {
+                    prettyNumber.push(",");
+                }
+                prettyNumber.push(numArr[index]);
             }
-            prettyNumber.push(numArr[index]);
+            return prettyNumber.join("");
         }
-        return prettyNumber.join("");
     }
 };
 
 export const reducer = (state = initialState, action) => {
+    // GET USER PROPERTIES
+    if (action.type === actions.GET_USER_PROPERTIES_REQUEST) {
+        return Object.assign({}, state, {
+            loading: true,
+            error: null
+        });
+    }
+    if (action.type === actions.GET_USER_PROPERTIES_SUCCESS) {
+        return Object.assign({}, state, {
+            properties: action.properties.properties,
+            loading: false,
+            error: null
+        });
+    }
+    if (action.type === actions.GET_USER_PROPERTIES_ERROR) {
+        return Object.assign({}, state, {
+            loading: false,
+            error: action.error
+        });
+    }
+    // ADD PROPERTY
+    if (action.type === actions.ADD_PROPERTY_REQUEST) {
+        return Object.assign({}, state, {
+            loading: true,
+            error: null
+        });
+    }
+    if (action.type === actions.ADD_PROPERTY_SUCCESS) {
+        return Object.assign({}, state, {
+            loading: false,
+            error: null
+        });
+    }
+    if (action.type === actions.ADD_PROPERTY_ERROR) {
+        return Object.assign({}, state, {
+            loading: false,
+            error: action.error
+        });
+    }
+
     /// LOAD EDIT DATA
     if (action.type === actions.LOAD) {
         return Object.assign({}, state, {
             editPropertyData: action.data,
-        });
-    }
-    /// SAVE PROPERTY
-    if (action.type === actions.SAVE_PROPERTY) {
-        let properties = state.properties.filter((property) => {
-            if (property.propertyId !== action.property.propertyId) {
-                return property;
-            }
-        })
-        const allProperties = Object.assign([...properties, action.property]);
-        const sortedProperties = allProperties.sort((a, b) => a.propertyId - b.propertyId)
-        return Object.assign({}, state, {
-            properties: [...sortedProperties]
         });
     }
     /// CLEAR EDIT DATA
@@ -135,8 +79,37 @@ export const reducer = (state = initialState, action) => {
             editPropertyData: null
         });
     }
+    /// SAVE PROPERTY
+    if (action.type === actions.SAVE_PROPERTY_REQUEST) {
+        return Object.assign({}, state, {
+            loading: true,
+            error: null
+        });
+    }
+    if (action.type === actions.SAVE_PROPERTY_SUCCESS) {
+        let properties = state.properties.filter((property) => {
+            if (property.propertyId !== action.property.propertyId) {
+                return property;
+            }
+        })
+        const allProperties = Object.assign([...properties, action.property]);
+        const sortedProperties = allProperties.sort((a, b) => a.propertyId - b.propertyId)
+        return Object.assign({}, state, {
+            properties: [...sortedProperties],
+            loading: false,
+            error: null
+        });
+    }
+    if (action.type === actions.SAVE_PROPERTY_ERROR) {
+        return Object.assign({}, state, {
+            loading: false,
+            error: action.error
+        });
+    }
+
+
     /// SAVE IMPROVEMENT
-    if (action.type === actions.SAVE_IMPROVEMENT) {
+    if (action.type === actions.SAVE_IMPROVEMENT_SUCCESS) {
         let properties = state.properties.filter((property) => {
             if (property.propertyId !== action.improvement.propertyId) {
                 return property;
@@ -150,109 +123,103 @@ export const reducer = (state = initialState, action) => {
         const allProperties = Object.assign([...properties, property]);
         const sortedProperties = allProperties.sort((a, b) => a.propertyId - b.propertyId)
         return Object.assign({}, state, {
-            properties: [...sortedProperties]
+            properties: [...sortedProperties],
+            loading: false,
+            error: null
+        });
+    }
+    if (action.type === actions.SAVE_IMPROVEMENT_REQUEST) {
+        return Object.assign({}, state, {
+            loading: true,
+            error: null
+        });
+    }
+    if (action.type === actions.SAVE_IMPROVEMENT_ERROR) {
+        return Object.assign({}, state, {
+            loading: false,
+            error: action.error
+        });
+    }
 
-        });
-    }
-    /// ADD PROPERTY
-    if (action.type === actions.ADD_PROPERTY) {
-        const properties = state.properties.filter((property) => {
-            if (property.propertyId !== action.property.propertyId) {
-                return property;
-            }
-        })
-        const propertyId = Math.floor((Math.random() * 100) * (100 * Math.random()) * (100 * Math.random()));
-        const template = {
-            propertyId: propertyId,
-            slug: initialState.slugify(action.property.address),
-            imgSrc: "",
-            address: "",
-            city: "",
-            state: "",
-            zip: "",
-            description: "",
-            price: "",
-            projectedValue: "",
-            yearBuilt: "",
-            roofType: "",
-            foundationType: "",
-            exteriorMaterial: "",
-            basement: "",
-            notes: "",
-            floorSize: "",
-            lotSize: "",
-            bedrooms: "",
-            bathrooms: "",
-            stories: "",
-            improvements: []
-        }
-        const finalProperty = Object.assign({}, template, action.property);
-        const allProperties = Object.assign([...properties, finalProperty]);
-        const sortedProperties = allProperties.sort((a, b) => a.propertyId - b.propertyId)
-        return Object.assign({}, state, {
-            properties: [...sortedProperties]
-        });
-    }
     /// ADD IMPROVEMENT
-    if (action.type === actions.ADD_IMPROVEMENT) {
-        const property = Object.assign({}, state.properties.find(property => property.propertyId === action.improvement.propertyId));
-        const properties = state.properties.filter((property) => {
-            if (property.propertyId !== action.improvement.propertyId) {
-                return property;
-            }
-        })
-        const improvementId = Math.floor((Math.random() * 100) * (100 * Math.random()) * (100 * Math.random()));
-        const template = {
-            propertyId: action.improvement.propertyId,
-            id: improvementId,
-            name: "",
-            cost: ""
-        }
-        const finalImprovement = Object.assign({}, template, action.improvement);
-        const improvements = property.improvements;
-        const allImprovements = Object.assign([...improvements, finalImprovement]);
-        const sortedImprovements = allImprovements.slice().sort((a, b) => a.id - b.id)
-        property.improvements = sortedImprovements;
-        const allProperties = Object.assign([...properties, property]);
-        const sortedProperties = allProperties.sort((a, b) => a.propertyId - b.propertyId)
-        console.log(sortedProperties)
+    if (action.type === actions.ADD_IMPROVEMENT_REQUEST) {
         return Object.assign({}, state, {
-            properties: [...sortedProperties]
+            loading: true,
+            error: null
+        });
+    }
+    if (action.type === actions.ADD_IMPROVEMENT_SUCCESS) {
+        return Object.assign({}, state, {
+            loading: false,
+            error: null
+        });
+    }
+    if (action.type === actions.ADD_IMPROVEMENT_ERROR) {
+        return Object.assign({}, state, {
+            loading: false,
+            error: action.error
         });
     }
     /// DELETE PROPERTY
-    if (action.type === actions.DELETE_PROPERTY) {
-        const properties = state.properties.filter((property) => {
-            if (property.propertyId !== action.propertyId) {
-                return property;
-            }
-        })
-        const allProperties = Object.assign([...properties]);
-        const sortedProperties = allProperties.sort((a, b) => a.propertyId - b.propertyId)
+    if (action.type === actions.DELETE_PROPERTY_REQUEST) {
         return Object.assign({}, state, {
-            properties: [...sortedProperties]
+            loading: true,
+            error: null
+        });
+    }
+    if (action.type === actions.DELETE_PROPERTY_SUCCESS) {
+        return Object.assign({}, state, {
+            loading: false,
+            error: null
+        });
+    }
+    if (action.type === actions.DELETE_PROPERTY_ERROR) {
+        return Object.assign({}, state, {
+            loading: false,
+            error: action.error
         });
     }
     /// DELETE IMPROVEMENT
-    if (action.type === actions.DELETE_IMPROVEMENT) {
-        const property = Object.assign({}, state.properties.find(property => property.propertyId === action.improvement.propertyId));
+    if (action.type === actions.DELETE_IMPROVEMENT_REQUEST) {
+        return Object.assign({}, state, {
+            loading: true,
+            error: null
+        });
+    }
+    if (action.type === actions.DELETE_IMPROVEMENT_SUCCESS) {
+        const property = Object.assign({}, state.properties.find(property => property.propertyId === action.improvement.property_id));
         const improvements = property.improvements.filter(item => item.id !== action.improvement.id);
+        console.log(improvements)
         property.improvements = improvements;
         const properties = state.properties.filter((property) => {
-            if (property.propertyId !== action.improvement.propertyId) {
+            if (property.propertyId !== action.improvement.property_id) {
                 return property;
             }
         })
         const allProperties = Object.assign([...properties, property]);
         const sortedProperties = allProperties.sort((a, b) => a.propertyId - b.propertyId)
         return Object.assign({}, state, {
-            properties: [...sortedProperties]
+            properties: [...sortedProperties],
+            loading: false,
+            error: null
         });
     }
-
-    /// REGISTER USER
-    if (action.type === actions.REGISTER_USER) {
-        console.log("user registered")
+    if (action.type === actions.DELETE_IMPROVEMENT_ERROR) {
+        return Object.assign({}, state, {
+            loading: false,
+            error: action.error
+        });
+    }
+    // EXAMPLE ACCOUNT INITIALIZED
+    if (action.type === actions.EXAMPLE_ACCOUNT_INITIALIZED) {
+        return Object.assign({}, state, {
+            exampleReady: true
+        });
+    }
+    if (action.type === actions.EXAMPLE_ACCOUNT_UNINITIALIZED) {
+        return Object.assign({}, state, {
+            exampleReady: false
+        });
     }
 
     return state;
