@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import LandingPage from './LandingPage';
+import { LandingPage } from './LandingPage';
 
 describe('<LandingPage />', () => {
 
