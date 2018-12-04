@@ -9,6 +9,7 @@ describe('reducer', () => {
         properties: [],
         loading: false,
         error: null,
+        exampleReady: false,
         slugify(text) {
             return text
                 .toString()
