@@ -1,6 +1,6 @@
 import React from 'react';
 import './LandingPage.css';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getUserProperties, deleteProperty, addProperty, exampleAccountInitialized, exampleAccountUninitialized } from '../actions';
 import { login } from '../actions/auth';

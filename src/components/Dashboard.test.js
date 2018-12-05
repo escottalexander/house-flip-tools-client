@@ -8,6 +8,4 @@ describe('<Dashboard />', () => {
     it('renders without crashing', () => {
         shallow(<Dashboard properties={[]} getUserProperties={() => 'any value'} dispatch={() => 'any value'} />)
     });
-
-
 })

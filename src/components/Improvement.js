@@ -18,9 +18,12 @@ export class Improvement extends React.Component {
         return (
             <div className="improvement">
                 <p>{data.name} - Cost: ${prettify(data.cost)}
-                    <button><Link to={`/dashboard/${this.props.slug}/improvement/${data.id}`}>Edit</Link>
+                    <button
+                        className="editImprovement"
+                    ><Link to={`/dashboard/${this.props.slug}/improvement/${data.id}`}>Edit</Link>
                     </button>
                     <button
+                        className="deleteImprovement"
                         onClick={() => this.deleteImprovement()}>
                         Delete
                     </button></p>
