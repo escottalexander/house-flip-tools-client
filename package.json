@@ -32,6 +32,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "react-redux": "^5.1.0"
+    "react-redux": "^5.1.0",
+    "redux-mock-store": "^1.5.3"
   }
 }

@@ -84,6 +84,6 @@ const formLink = reduxForm({
     // onSubmitFail: (errors, dispatch) =>
     //     dispatch(focus('addImprovement', Object.keys(errors)[0]))
 });
-AddImprovement = formLink(AddImprovement);
 
-export default connect(mapStateToProps)(AddImprovement);
+
+export default connect(mapStateToProps)(formLink(AddImprovement));

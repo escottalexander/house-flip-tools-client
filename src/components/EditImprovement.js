@@ -82,7 +82,6 @@ const mapStateToProps = (state, props) => {
         thisProperty,
         loadData: loadAccount,
         improvement,
-        // editImprovement,
         saveImprovement,
         clearEditData,
         initialValues: state.reducer.editPropertyData
@@ -93,6 +92,6 @@ const formLink = reduxForm({
     onSubmitFail: (errors, dispatch) =>
         dispatch(focus('editImprovement', Object.keys(errors)[0]))
 });
-EditImprovement = formLink(EditImprovement);
 
-export default connect(mapStateToProps)(EditImprovement);
+
+export default connect(mapStateToProps)(formLink(EditImprovement));

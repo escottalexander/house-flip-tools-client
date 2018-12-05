@@ -69,7 +69,7 @@ export class PropertyView extends React.Component {
                                 improvementCosts
                                     ?
                                     <h3 className="projection">This house flip will cost you ${prettify(improvementCosts)} in
-    repairs. Add a property price to see it reflected in the total cost.</h3>
+        repairs. Add a property price to see it reflected in the total cost.</h3>
                                     :
                                     <h3 className="projection">Add a property price and improvements to see your total cost.</h3>
                         }
