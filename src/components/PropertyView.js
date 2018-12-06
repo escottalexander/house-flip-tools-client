@@ -33,7 +33,7 @@ export class PropertyView extends React.Component {
         const totalCost = property.price + improvementCosts;
         return (
             <main className="PropertyView">
-                <h2>{property.address}</h2>
+                <h2 className="header">{property.address}</h2>
                 <p className="address2">{property.city}, {property.state} {property.zip}</p>
                 <div className="ind-property">
                     {property.imgSrc ? <img className="property-img" src={property.imgSrc} alt="picture of property" /> : ""}

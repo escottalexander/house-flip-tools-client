@@ -40,6 +40,7 @@ export class EditImprovement extends React.Component {
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
                 )}>
+                <h2 className="header">Edit Improvement</h2>
                 {successMessage}
                 {errorMessage}
                 <Field

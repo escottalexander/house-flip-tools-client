@@ -1,6 +1,10 @@
 .EditImprovement {
-    padding: 10%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    align-content: space-around;
+    text-align: center;
+}
+
+.EditImprovement .form-input {
+    padding: 30px;
 }
