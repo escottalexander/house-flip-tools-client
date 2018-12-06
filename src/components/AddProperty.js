@@ -186,6 +186,6 @@ const formLink = reduxForm({
     //     dispatch(focus('addProperty', Object.keys(errors)[0]))
 });
 
-AddProperty = formLink(AddProperty)
 
-export default connect(mapStateToProps)(AddProperty);
+
+export default connect(mapStateToProps)(formLink(AddProperty));

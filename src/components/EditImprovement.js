@@ -40,6 +40,7 @@ export class EditImprovement extends React.Component {
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
                 )}>
+                <h2 className="header">Edit Improvement</h2>
                 {successMessage}
                 {errorMessage}
                 <Field
@@ -82,7 +83,6 @@ const mapStateToProps = (state, props) => {
         thisProperty,
         loadData: loadAccount,
         improvement,
-        // editImprovement,
         saveImprovement,
         clearEditData,
         initialValues: state.reducer.editPropertyData
@@ -93,6 +93,6 @@ const formLink = reduxForm({
     onSubmitFail: (errors, dispatch) =>
         dispatch(focus('editImprovement', Object.keys(errors)[0]))
 });
-EditImprovement = formLink(EditImprovement);
 
-export default connect(mapStateToProps)(EditImprovement);
+
+export default connect(mapStateToProps)(formLink(EditImprovement));

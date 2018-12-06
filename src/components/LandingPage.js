@@ -1,13 +1,13 @@
 import React from 'react';
 import './LandingPage.css';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getUserProperties, deleteProperty, addProperty, exampleAccountInitialized, exampleAccountUninitialized } from '../actions';
+import { getUserProperties, deleteProperty, addImprovement, addProperty, exampleAccountInitialized, exampleAccountUninitialized } from '../actions';
 import { login } from '../actions/auth';
-import { exampleProperties } from '../exampleAccountState';
+import { exampleProperties, exampleImprovements } from '../exampleAccountState';
 
 export class LandingPage extends React.Component {
-    onSubmit() {
+    exampleAccountSetup() {
         this.props.dispatch(this.props.login("ExampleAccount", "password10"))
             .then(() => this.props.dispatch(this.props.getUserProperties(this.props.user)))
             .then(() => {
@@ -35,7 +35,7 @@ export class LandingPage extends React.Component {
                     <p>House Flip Tools is a useful house flipping cost analyzer that aims to help you discover the financial feasibility of a "flip".</p>
 
                     <p>Login to view your properties or click the button below to see an example account.</p>
-                    <button onClick={() => this.onSubmit()}>Example Account</button>
+                    <button onClick={() => this.exampleAccountSetup()}>Example Account</button>
                 </div>
             </main>
         );
@@ -53,6 +53,7 @@ const mapStateToProps = (state, props) => {
         getUserProperties,
         deleteProperty,
         addProperty,
+        addImprovement,
         exampleAccountInitialized,
         exampleAccountUninitialized,
         exampleReady
