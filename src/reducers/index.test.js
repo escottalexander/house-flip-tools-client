@@ -1,8 +1,5 @@
 import { reducer } from './index';
 import * as actions from '../actions';
-//import { image1, image2 } from '../initialStateImages'
-
-
 
 describe('reducer', () => {
     const initialState = {
@@ -10,6 +7,8 @@ describe('reducer', () => {
         loading: false,
         error: null,
         exampleReady: false,
+        analysisVisible: false,
+        profitMargin: 0,
         slugify(text) {
             return text
                 .toString()

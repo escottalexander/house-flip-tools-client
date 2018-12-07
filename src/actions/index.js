@@ -1,9 +1,6 @@
 import { API_BASE_URL } from '../config'
 import { SubmissionError } from 'redux-form';
 import { normalizeResponseErrors } from './utils';
-let token = localStorage.getItem('authToken');
-
-
 
 // EXAMPLE ACCOUNT INITIALIZE
 export const EXAMPLE_ACCOUNT_INITIALIZED = 'EXAMPLE_ACCOUNT_INITIALIZED';
@@ -27,6 +24,24 @@ export const clearEditData = () => ({
     type: CLEAR_EDIT_DATA,
 });
 
+// CHANGE MARGIN
+export const CHANGE_MARGIN = 'CHANGE_MARGIN';
+export const changeMargin = value => ({
+    type: CHANGE_MARGIN,
+    value
+});
+// SHOW ANALYSIS
+export const SHOW_ANALYSIS = 'SHOW_ANALYSIS';
+export const showAnalysis = () => ({
+    type: SHOW_ANALYSIS,
+});
+
+// HIDE ANALYSIS
+export const HIDE_ANALYSIS = 'HIDE_ANALYSIS';
+export const hideAnalysis = () => ({
+    type: HIDE_ANALYSIS,
+});
+
 // SAVE PROPERTY
 export const SAVE_PROPERTY_REQUEST = 'SAVE_PROPERTY_REQUEST';
 export const savePropertyRequest = property => ({
@@ -47,6 +62,7 @@ export const savePropertyError = error => ({
 });
 
 export const saveProperty = property => dispatch => {
+    let token = localStorage.getItem('authToken');
     dispatch(savePropertyRequest());
     return fetch(`${API_BASE_URL}/api/properties/${property.slug}/${property.propertyId}`, {
         method: 'PUT',
@@ -57,9 +73,8 @@ export const saveProperty = property => dispatch => {
         body: JSON.stringify(property)
     })
         .then(res => normalizeResponseErrors(res))
-        .then(res => res.json())
         .then(() => {
-            dispatch(savePropertySuccess())
+            return dispatch(savePropertySuccess(property))
         })
         .catch(err => {
             const { reason, message, location } = err;
@@ -92,6 +107,7 @@ export const addPropertyError = error => ({
 });
 
 export const addProperty = property => dispatch => {
+    let token = localStorage.getItem('authToken');
     dispatch(addPropertyRequest());
     return fetch(`${API_BASE_URL}/api/properties/add`, {
         method: 'POST',
@@ -136,6 +152,7 @@ export const deletePropertyError = error => ({
 });
 
 export const deleteProperty = (property) => dispatch => {
+    let token = localStorage.getItem('authToken');
     dispatch(deletePropertyRequest());
     return (
         fetch(`${API_BASE_URL}/api/properties/${property.slug}`, {
@@ -173,6 +190,7 @@ export const addImprovementError = error => ({
 });
 
 export const addImprovement = improvement => dispatch => {
+    let token = localStorage.getItem('authToken');
     dispatch(addImprovementRequest());
     return fetch(`${API_BASE_URL}/api/properties/${improvement.propertyId}/add-improvement`, {
         method: 'POST',
@@ -220,7 +238,7 @@ export const saveImprovementError = improvement => ({
 });
 
 export const saveImprovement = improvement => dispatch => {
-    console.log(improvement)
+    let token = localStorage.getItem('authToken');
     dispatch(saveImprovementRequest());
     return fetch(`${API_BASE_URL}/api/properties/${improvement.slug}/improvement/${improvement.id}`, {
         method: 'PUT',
@@ -266,7 +284,7 @@ export const deleteImprovementError = error => ({
 });
 
 export const deleteImprovement = (improvement) => dispatch => {
-    console.log(improvement)
+    let token = localStorage.getItem('authToken');
     dispatch(deleteImprovementRequest());
     return (
         fetch(`${API_BASE_URL}/api/properties/${improvement.slug}/improvement/${improvement.id}`, {
@@ -276,7 +294,6 @@ export const deleteImprovement = (improvement) => dispatch => {
             }
         }
         )
-            //.then(res => res.json(res))
             .then(() => {
                 dispatch(deleteImprovementSuccess(improvement)
                 )
@@ -308,6 +325,7 @@ export const getUserPropertiesError = error => ({
 });
 
 export const getUserProperties = (user) => dispatch => {
+    let token = localStorage.getItem('authToken');
     dispatch(getUserPropertiesRequest());
     return (
         fetch(`${API_BASE_URL}/api/properties/${user.id}`, {

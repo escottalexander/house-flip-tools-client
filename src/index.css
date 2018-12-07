@@ -40,3 +40,7 @@ main,
 form {
   flex: 1 0 auto;
 }
+
+button {
+  cursor: pointer;
+}

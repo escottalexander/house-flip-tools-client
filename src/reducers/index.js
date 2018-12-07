@@ -5,6 +5,8 @@ const initialState = {
     loading: false,
     error: null,
     exampleReady: false,
+    analysisVisible: false,
+    profitMargin: 0,
     slugify(text) {
         return text
             .toString()
@@ -67,6 +69,13 @@ export const reducer = (state = initialState, action) => {
         });
     }
 
+    /// CHANGE MARGIN
+    if (action.type === actions.CHANGE_MARGIN) {
+        return Object.assign({}, state, {
+            profitMargin: action.value,
+        });
+    }
+
     /// LOAD EDIT DATA
     if (action.type === actions.LOAD) {
         return Object.assign({}, state, {
@@ -79,6 +88,20 @@ export const reducer = (state = initialState, action) => {
             editPropertyData: null
         });
     }
+
+    /// SHOW ANALYSIS
+    if (action.type === actions.SHOW_ANALYSIS) {
+        return Object.assign({}, state, {
+            analysisVisible: true
+        });
+    }
+    /// HIDE ANALYSIS
+    if (action.type === actions.HIDE_ANALYSIS) {
+        return Object.assign({}, state, {
+            analysisVisible: false
+        });
+    }
+
     /// SAVE PROPERTY
     if (action.type === actions.SAVE_PROPERTY_REQUEST) {
         return Object.assign({}, state, {
@@ -88,9 +111,7 @@ export const reducer = (state = initialState, action) => {
     }
     if (action.type === actions.SAVE_PROPERTY_SUCCESS) {
         let properties = state.properties.filter((property) => {
-            if (property.propertyId !== action.property.propertyId) {
-                return property;
-            }
+            return property.propertyId !== action.property.propertyId;
         })
         const allProperties = Object.assign([...properties, action.property]);
         const sortedProperties = allProperties.sort((a, b) => a.propertyId - b.propertyId)
@@ -111,9 +132,7 @@ export const reducer = (state = initialState, action) => {
     /// SAVE IMPROVEMENT
     if (action.type === actions.SAVE_IMPROVEMENT_SUCCESS) {
         let properties = state.properties.filter((property) => {
-            if (property.propertyId !== action.improvement.propertyId) {
-                return property;
-            }
+            return property.propertyId !== action.improvement.propertyId;
         })
         const property = Object.assign({}, state.properties.find(property => property.propertyId === action.improvement.propertyId));
         const improvements = property.improvements.filter(item => item.id !== action.improvement.id);
@@ -189,12 +208,9 @@ export const reducer = (state = initialState, action) => {
     if (action.type === actions.DELETE_IMPROVEMENT_SUCCESS) {
         const property = Object.assign({}, state.properties.find(property => property.propertyId === action.improvement.property_id));
         const improvements = property.improvements.filter(item => item.id !== action.improvement.id);
-        console.log(improvements)
         property.improvements = improvements;
         const properties = state.properties.filter((property) => {
-            if (property.propertyId !== action.improvement.property_id) {
-                return property;
-            }
+            return property.propertyId !== action.improvement.property_id;
         })
         const allProperties = Object.assign([...properties, property]);
         const sortedProperties = allProperties.sort((a, b) => a.propertyId - b.propertyId)
