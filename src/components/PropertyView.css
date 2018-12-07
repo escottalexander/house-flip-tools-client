@@ -30,3 +30,22 @@
      font-size: 16px;
      text-align: center;
  }
+
+ .analyze {
+     margin: 40px;
+ }
+
+ .analyze-disabled {
+     cursor: not-allowed;
+     background-color: gray;
+     color: black;
+     margin: 40px;
+ }
+
+
+ .analyze-disabled:hover {
+     cursor: not-allowed;
+     background-image: none;
+     background-color: gray;
+     color: black;
+ }
