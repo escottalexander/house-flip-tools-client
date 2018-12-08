@@ -29,9 +29,15 @@ form button {
     margin: 20px 0px;
 }
 
+input[type="file"] {
+    max-width: 181px;
+}
+
 @media screen and (min-width: 320px) {
-    .form-input {
+    .half .form-input {
         max-width: 100%;
+        text-align: right;
+        margin-right: 20%
     }
 
     .buttons {
@@ -41,7 +47,7 @@ form button {
         margin-right: auto;
     }
 
-    form button {
+    .buttons button {
         margin: 20px;
     }
 }
@@ -56,5 +62,16 @@ form button {
 
     .half {
         width: 50%;
+    }
+
+    .half .form-input {
+        text-align: right;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .flex-container {
+
+        padding: 5% 15% 0 10%;
     }
 }

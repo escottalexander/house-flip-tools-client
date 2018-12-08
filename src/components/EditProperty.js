@@ -84,13 +84,6 @@ export class EditProperty extends React.Component {
                             validate={[]}
                         />
                         <Field
-                            name="description"
-                            element="textarea"
-                            component={Input}
-                            label="Description:"
-                            validate={[]}
-                        />
-                        <Field
                             name="floorSize"
                             type="number"
                             component={Input}
@@ -102,6 +95,13 @@ export class EditProperty extends React.Component {
                             type="text"
                             component={Input}
                             label="Year Built:"
+                            validate={[]}
+                        />
+                        <Field
+                            name="description"
+                            element="textarea"
+                            component={Input}
+                            label="Description:"
                             validate={[]}
                         />
                     </div>

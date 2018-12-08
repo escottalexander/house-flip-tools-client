@@ -35,7 +35,7 @@ export class LandingPage extends React.Component {
                     <p>House Flip Tools is a useful house flipping cost analyzer that aims to help you discover the financial feasibility of a "flip".</p>
 
                     <p>Login to view your properties or click the button below to see an example account.</p>
-                    <button onClick={() => this.exampleAccountSetup()}>Example Account</button>
+                    <button className="example-account-button" onClick={() => this.exampleAccountSetup()}>Example Account</button>
                 </div>
             </main>
         );
