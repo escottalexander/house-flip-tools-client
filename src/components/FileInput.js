@@ -10,15 +10,12 @@ export default class FileInput extends React.Component {
         //console.log(e.target.files[0])
         const file = e.target.files[0];
         if (!file) {
-            console.log("!file")
-            return
+            return;
         }
         const { input: { onChange } } = this.props;
         const fileReader = new FileReader();
         fileReader.addEventListener('load', () => {
-            // console.log(fileReader.result)
             this.props.input.value = fileReader.result
-            // console.log(this.props.input.value)
             onChange(this.props.input.value)
         })
         fileReader.readAsDataURL(file)
@@ -36,8 +33,7 @@ export default class FileInput extends React.Component {
                 <div className="form-warning">{this.props.meta.warning}</div>
             );
         }
-        const { input: { value } } = this.props
-        const { input, label, required, meta, } = this.props
+
         return (
             <div className="form-input">
                 <label htmlFor={this.props.input.name}>

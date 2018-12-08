@@ -41,7 +41,7 @@ export class PropertyView extends React.Component {
                 <h2 className="header">{property.address}</h2>
                 <p className="address2">{property.city}, {property.state} {property.zip}</p>
                 <div className="ind-property">
-                    {property.imgSrc ? <img className="property-img" src={property.imgSrc} alt="picture of property" /> : ""}
+                    {property.imgSrc ? <img className="property-img" src={property.imgSrc} alt="the property" /> : ""}
                     <div className="prop-info">
                         {property.description ? <p className="short-desc">{property.description}</p> : ""}
                         {property.floorSize ? <p>Floor Size: {prettify(property.floorSize)} ft²</p> : ""}

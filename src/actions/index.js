@@ -64,6 +64,7 @@ export const savePropertyError = error => ({
 export const saveProperty = property => dispatch => {
     let token = localStorage.getItem('authToken');
     dispatch(savePropertyRequest());
+    console.log(property)
     return fetch(`${API_BASE_URL}/api/properties/${property.slug}/${property.propertyId}`, {
         method: 'PUT',
         headers: {
