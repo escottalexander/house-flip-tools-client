@@ -17,7 +17,7 @@ import AddImprovement from './AddImprovement';
 export default class Main extends Component {
   render() {
     return (
-      <Router onUpdate={() => window.scrollTo(0, 0)}>
+      <Router>
         <ScrollContext>
           <Fragment>
             <Navbar />
