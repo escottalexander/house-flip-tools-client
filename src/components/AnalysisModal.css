@@ -38,14 +38,14 @@
     padding: 0px;
     position: fixed;
     right: 5%;
-    background-color: #c78279;
+    background-color: #b65d52;
     color: black;
     font-weight: bolder;
 }
 
 .close-x:hover {
     background-image: none;
-    background-color: #b65d52;
+    background-color: #c78279;
 }
 
 .left {

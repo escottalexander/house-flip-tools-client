@@ -9,9 +9,8 @@
     justify-content: space-around;
 }
 
-.RegisterPage a:hover {
-    color: black;
-    text-decoration: black;
+.RegisterPage a {
+    color: #0c4b8f;
     text-decoration-line: underline;
 }
 

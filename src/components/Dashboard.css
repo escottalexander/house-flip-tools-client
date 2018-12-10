@@ -10,18 +10,18 @@
     margin: 0px;
     padding: 20px 0px;
     color: white;
-    background-color: #1277E1;
+    background-color: #0c4b8f;
 }
 
 .Dashboard button {
 
     border-radius: 10px;
     border: 2px solid #0B3142;
-    background-color: #1277E1;
+    background-color: #0c4b8f;
 }
 
 .Dashboard button:hover {
-    background-image: linear-gradient(to top, #1277E1, #0B3142)
+    background-image: linear-gradient(to top, #0c4b8f, #0B3142)
 }
 
 button a {
