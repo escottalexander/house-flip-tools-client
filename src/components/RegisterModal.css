@@ -1,0 +1,61 @@
+.RegisterModal {
+    border-radius: 10px;
+    border: 2px solid #0B3142;
+    background-color: #FCFDFF;
+    margin: 15% 5% 0 5%;
+    min-height: 300px;
+    text-align: center;
+}
+
+.RegisterModal .form-input {
+    text-align: center;
+    max-width: 100%;
+}
+
+.RegisterModal h2 {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.RegisterModal form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 30px;
+}
+
+.RegisterModal a {
+    color: #0c4b8f;
+    text-decoration-line: underline;
+}
+
+.RegisterModal .close-x {
+    height: 30px;
+    width: 30px;
+    padding: 0px;
+    position: fixed;
+    right: 5%;
+    background-color: #b65d52;
+    color: black;
+    font-weight: bolder;
+}
+
+.RegisterModal .close-x:hover {
+    background-image: none;
+    background-color: #c78279;
+}
+
+label {
+    margin: 20px;
+}
+
+select {
+    margin: 10px;
+}
+
+.register {
+    margin: 20px;
+    height: 40px;
+    max-width: 100px;
+    margin: 20px auto;
+}

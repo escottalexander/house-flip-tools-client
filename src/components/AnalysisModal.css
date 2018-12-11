@@ -32,7 +32,7 @@
     text-align: center;
 }
 
-.close-x {
+.analysis-modal .close-x {
     height: 30px;
     width: 30px;
     padding: 0px;
@@ -43,7 +43,7 @@
     font-weight: bolder;
 }
 
-.close-x:hover {
+.analysis-modal .close-x:hover {
     background-image: none;
     background-color: #c78279;
 }

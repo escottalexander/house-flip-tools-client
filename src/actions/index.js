@@ -30,6 +30,7 @@ export const changeMargin = value => ({
     type: CHANGE_MARGIN,
     value
 });
+
 // SHOW ANALYSIS
 export const SHOW_ANALYSIS = 'SHOW_ANALYSIS';
 export const showAnalysis = () => ({

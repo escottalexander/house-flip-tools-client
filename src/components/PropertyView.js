@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Improvement from './Improvement';
 import AnalysisModal from './AnalysisModal'
 import './PropertyView.css';
-import { deleteProperty, getUserProperties, showAnalysis, hideAnalysis } from '../actions';
+import { deleteProperty, getUserProperties, showAnalysis } from '../actions';
 
 export class PropertyView extends React.Component {
     componentDidMount() {
@@ -105,7 +105,6 @@ const mapStateToProps = (state, props) => {
         user,
         analysisVisible,
         showAnalysis,
-        hideAnalysis,
         getUserProperties,
         deleteProperty,
         property,

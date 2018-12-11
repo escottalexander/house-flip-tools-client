@@ -4,6 +4,8 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getUserProperties, deleteProperty, addImprovement, addProperty, exampleAccountInitialized, exampleAccountUninitialized } from '../actions';
 import { login } from '../actions/auth';
+import LoginModal from './LoginModal'
+import RegisterModal from './RegisterModal'
 import { exampleProperties, exampleImprovements } from '../exampleAccountState';
 
 export class LandingPage extends React.Component {
@@ -37,12 +39,16 @@ export class LandingPage extends React.Component {
                     <p>Login to view your properties or click the button below to see an example account.</p>
                     <button className="example-account-button" onClick={() => this.exampleAccountSetup()}>Example Account</button>
                 </div>
+                {this.props.loginVisible ? <LoginModal /> : ""}
+                {this.props.registerVisible ? <RegisterModal /> : ""}
             </main>
         );
     }
 };
 
 const mapStateToProps = (state, props) => {
+    const loginVisible = props.match.path === "/login";
+    const registerVisible = props.match.path === "/register";
     const user = state.auth.currentUser;
     const properties = state.reducer.properties;
     const exampleReady = state.reducer.exampleReady;
@@ -54,6 +60,8 @@ const mapStateToProps = (state, props) => {
         deleteProperty,
         addProperty,
         addImprovement,
+        loginVisible,
+        registerVisible,
         exampleAccountInitialized,
         exampleAccountUninitialized,
         exampleReady

@@ -4,9 +4,7 @@ import { ScrollContext } from 'react-router-scroll-4'
 import Navbar from './Navbar';
 import Footer from './Footer';
 import LandingPage from './LandingPage';
-import LoginPage from './LoginPage';
 import Logout from './Logout';
-import RegisterPage from './RegisterPage';
 import Dashboard from './Dashboard';
 import PropertyView from './PropertyView';
 import EditProperty from './EditProperty';
@@ -24,9 +22,9 @@ export default class Main extends Component {
             <Switch>
               <Route exact path="/" render={() => <Redirect to="/home" />} />
               <Route exact path="/home" component={LandingPage} />
-              <Route exact path="/login" component={LoginPage} />
+              <Route exact path="/login" component={LandingPage} />
               <Route exact path="/logout" component={Logout} />
-              <Route exact path="/register" component={RegisterPage} />
+              <Route exact path="/register" component={LandingPage} />
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/dashboard/add" component={AddProperty} />
               <Route exact path="/dashboard/:slug" component={PropertyView} />

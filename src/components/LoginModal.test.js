@@ -1,20 +1,20 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { LoginPage } from './LoginPage';
+import { LoginModal } from './LoginModal';
 import { Provider } from 'react-redux';
 import store from '../store';
 
-describe('<LoginPage />', () => {
+describe('<LoginModal />', () => {
     const mockFunction = jest.fn();
 
     it('renders without crashing', () => {
-        shallow(<LoginPage handleSubmit={mockFunction} />)
+        shallow(<LoginModal handleSubmit={mockFunction} />)
     });
 
     it('Renders correct fields', () => {
         const wrapper = shallow(
             <Provider store={store}>
-                <LoginPage handleSubmit={mockFunction} />
+                <LoginModal handleSubmit={mockFunction} />
             </Provider>
         ).dive()
 
