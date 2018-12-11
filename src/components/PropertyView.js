@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Improvement from './Improvement';
 import AnalysisModal from './AnalysisModal'
 import './PropertyView.css';
-import { deleteProperty, getUserProperties, showAnalysis, hideAnalysis } from '../actions';
+import { deleteProperty, getUserProperties, showAnalysis } from '../actions';
 
 export class PropertyView extends React.Component {
     componentDidMount() {
@@ -29,57 +29,61 @@ export class PropertyView extends React.Component {
         }
         const prettify = this.props.prettify;
         const property = this.props.property;
-        //let improvementCosts = 0;
         const improvements = property.improvements.map((item, index) => {
-            //improvementCosts += parseInt(item.cost);
             return <Improvement key={`${index}-${item.name}`} data={item} />
         }
         );
-        // const totalCost = property.price + improvementCosts;
         return (
             <main className="PropertyView">
-                <h2 className="header">{property.address}</h2>
-                <p className="address2">{property.city}, {property.state} {property.zip}</p>
+                <div className="header">
+                    <h2 className="address-one">{property.address}</h2>
+                    <p className="address-two">{property.city}, {property.state} {property.zip}</p>
+                </div>
                 <div className="ind-property">
-                    {property.imgSrc ? <img className="property-img" src={property.imgSrc} alt="picture of property" /> : ""}
-                    <div className="prop-info">
-                        {property.description ? <p className="short-desc">{property.description}</p> : ""}
-                        {property.floorSize ? <p>Floor Size: {prettify(property.floorSize)} ft²</p> : ""}
-                        {property.yearBuilt ? <p>Year Built: {property.yearBuilt}</p> : ""}
-                        {property.lotSize ? <p>Lot Size: {property.lotSize} acres</p> : ""}
-                        {property.price ? <p>Price: ${prettify(property.price)}</p> : ""}
-                        {property.stories ? <p>Stories: {property.stories}</p> : ""}
-                        {property.bedrooms ? <p>Bedrooms: {property.bedrooms}</p> : ""}
-                        {property.bathrooms ? <p>Baths: {property.bathrooms}</p> : ""}
-                        {property.basement ? <p>Basement: {property.basement}</p> : ""}
-                        {property.foundationType ? <p>Foundation: {property.foundationType}</p> : ""}
-                        {property.exteriorMaterial ? <p>Exterior: {property.exteriorMaterial}</p> : ""}
-                        {property.roofType ? <p>Roof Material: {property.roofType}</p> : ""}
-                        {property.notes ? <p>Additional Notes: {property.notes}</p> : ""}
-                        <button><Link to={`/dashboard/${property.slug}/edit`}>Edit Property Details</Link></button>
-                        <button onClick={(event) => this.deleteProperty()}>Delete Property</button>
-                        <h3>Planned Repairs and Improvements</h3>
-                        {improvements}
-                        <button><Link to={`/dashboard/${property.slug}/add-improvement`}>Add Improvement</Link></button>
+                    {property.description ? <p className="short-desc">{property.description}</p> : ""}
+                    <section className="property-info">
+                        <div className="two-thirds">
+                            {property.imgSrc ? <img className="property-img" src={property.imgSrc} alt="the property" /> : ""}
+                        </div>
+                        <div className="third">
+                            {property.floorSize ? <p>Floor Size: {prettify(property.floorSize)} ft²</p> : ""}
+                            {property.yearBuilt ? <p>Year Built: {property.yearBuilt}</p> : ""}
+                            {property.lotSize ? <p>Lot Size: {property.lotSize} acres</p> : ""}
+                            {property.price ? <p>Price: ${prettify(property.price)}</p> : ""}
+                            {property.stories ? <p>Stories: {property.stories}</p> : ""}
+                            {property.bedrooms ? <p>Bedrooms: {property.bedrooms}</p> : ""}
+                            {property.bathrooms ? <p>Baths: {property.bathrooms}</p> : ""}
+                            {property.basement ? <p>Basement: {property.basement}</p> : ""}
+                            {property.foundationType ? <p>Foundation: {property.foundationType}</p> : ""}
+                            {property.exteriorMaterial ? <p>Exterior: {property.exteriorMaterial}</p> : ""}
+                            {property.roofType ? <p>Roof Material: {property.roofType}</p> : ""}
+                        </div>
+                    </section>
+                    {property.notes ? <p>Additional Notes: {property.notes}</p> : ""}
+                    <button><Link to={`/dashboard/${property.slug}/edit`}>Edit Property Details</Link></button>
+                    <button className="delete-btn" onClick={(event) => this.deleteProperty()}>Delete Property</button>
+                    <h3>Planned Repairs and Improvements</h3>
+                    {improvements}
+                    <button><Link to={`/dashboard/${property.slug}/add-improvement`}>Add Improvement</Link></button>
 
-                        {property.price && improvements.length > 0
+                    {property.price && improvements.length > 0
+                        ?
+                        <h3 className="projection">Click the button below to analyze your property.</h3>
+                        :
+                        property.price
                             ?
-                            <h3 className="projection">Click the button below to analyze your property.</h3>
+                            <h3 className="projection">Add improvements to see the analysis of your property.</h3>
                             :
-                            property.price
+                            improvements.length > 0
                                 ?
-                                <h3 className="projection">Add improvements to see the analysis of your property.</h3>
+                                <h3 className="projection">Add a property price to see the analysis of your property.</h3>
                                 :
-                                improvements.length > 0
-                                    ?
-                                    <h3 className="projection">Add a property price to see the analysis of your property.</h3>
-                                    :
-                                    <h3 className="projection">Add a property price and improvements to see the analysis of your property.</h3>
-                        }
-                        {
-                            property.price && improvements.length > 0 ? <button className="analyze" onClick={() => this.showAnalysis()}>Analyze My Property</button> : <button className="analyze-disabled">Analyze My Property</button>
-                        }
-                    </div>
+                                <h3 className="projection">Add a property price and improvements to see the analysis of your property.</h3>
+                    }
+                    {
+                        property.price && improvements.length > 0 ? <button className="analyze" onClick={() => this.showAnalysis()}>Analyze My Property</button> : <button className="analyze-disabled">Analyze My Property</button>
+                    }
+
                 </div>
                 {this.props.analysisVisible ? <AnalysisModal data={property} /> : ""}
             </main>
@@ -101,7 +105,6 @@ const mapStateToProps = (state, props) => {
         user,
         analysisVisible,
         showAnalysis,
-        hideAnalysis,
         getUserProperties,
         deleteProperty,
         property,

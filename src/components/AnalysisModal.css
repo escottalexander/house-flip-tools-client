@@ -32,20 +32,20 @@
     text-align: center;
 }
 
-.close-x {
+.analysis-modal .close-x {
     height: 30px;
     width: 30px;
     padding: 0px;
     position: fixed;
     right: 5%;
-    background-color: #c78279;
+    background-color: #b65d52;
     color: black;
     font-weight: bolder;
 }
 
-.close-x:hover {
+.analysis-modal .close-x:hover {
     background-image: none;
-    background-color: #b65d52;
+    background-color: #c78279;
 }
 
 .left {

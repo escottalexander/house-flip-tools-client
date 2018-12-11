@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './Dashboard.css';
 import Property from './Property'
@@ -24,6 +24,11 @@ export class Dashboard extends React.Component {
                 <h2 className="header">Properties</h2>
                 <div className="properties">
                     {properties}
+                    {properties.length === 0 ?
+                        <h3>It looks like you don't have any properties. Click the buttopn below to add one.</h3>
+                        :
+                        <h4>Click the button below to add a new property.</h4>
+                    }
                     <button><Link to='/dashboard/add'>Add Property</Link></button>
                 </div>
             </main>
