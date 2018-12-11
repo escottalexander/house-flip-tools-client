@@ -1,4 +1,4 @@
-import { LOAD, loadData, SAVE_PROPERTY_REQUEST, savePropertyRequest, SAVE_PROPERTY_SUCCESS, savePropertySuccess, SAVE_PROPERTY_ERROR, savePropertyError, SAVE_IMPROVEMENT_REQUEST, saveImprovementRequest, SAVE_IMPROVEMENT_SUCCESS, saveImprovementSuccess, SAVE_IMPROVEMENT_ERROR, saveImprovementError, ADD_PROPERTY_REQUEST, addPropertyRequest, ADD_PROPERTY_SUCCESS, addPropertySuccess, ADD_PROPERTY_ERROR, addPropertyError, ADD_IMPROVEMENT_REQUEST, addImprovementRequest, ADD_IMPROVEMENT_SUCCESS, addImprovementSuccess, ADD_IMPROVEMENT_ERROR, addImprovementError, DELETE_PROPERTY_REQUEST, deletePropertyRequest, DELETE_PROPERTY_SUCCESS, deletePropertySuccess, DELETE_PROPERTY_ERROR, deletePropertyError, DELETE_IMPROVEMENT_REQUEST, deleteImprovementRequest, DELETE_IMPROVEMENT_SUCCESS, deleteImprovementSuccess, DELETE_IMPROVEMENT_ERROR, deleteImprovementError, CLEAR_EDIT_DATA, clearEditData } from './index';
+import { CHANGE_MARGIN, changeMargin, LOAD, loadData, SAVE_PROPERTY_REQUEST, savePropertyRequest, SAVE_PROPERTY_SUCCESS, savePropertySuccess, SAVE_PROPERTY_ERROR, savePropertyError, SAVE_IMPROVEMENT_REQUEST, saveImprovementRequest, SAVE_IMPROVEMENT_SUCCESS, saveImprovementSuccess, SAVE_IMPROVEMENT_ERROR, saveImprovementError, ADD_PROPERTY_REQUEST, addPropertyRequest, ADD_PROPERTY_SUCCESS, addPropertySuccess, ADD_PROPERTY_ERROR, addPropertyError, ADD_IMPROVEMENT_REQUEST, addImprovementRequest, ADD_IMPROVEMENT_SUCCESS, addImprovementSuccess, ADD_IMPROVEMENT_ERROR, addImprovementError, DELETE_PROPERTY_REQUEST, deletePropertyRequest, DELETE_PROPERTY_SUCCESS, deletePropertySuccess, DELETE_PROPERTY_ERROR, deletePropertyError, DELETE_IMPROVEMENT_REQUEST, deleteImprovementRequest, DELETE_IMPROVEMENT_SUCCESS, deleteImprovementSuccess, DELETE_IMPROVEMENT_ERROR, deleteImprovementError, CLEAR_EDIT_DATA, clearEditData, SHOW_ANALYSIS, showAnalysis, HIDE_ANALYSIS, hideAnalysis } from './index';
 
 describe('loadData', () => {
     it('Should return the action', () => {
@@ -13,6 +13,15 @@ describe('clearEditData', () => {
     it('Should return the action', () => {
         const action = clearEditData();
         expect(action.type).toEqual(CLEAR_EDIT_DATA);
+    });
+});
+
+describe('changeMargin', () => {
+    it('Should return the action', () => {
+        const value = 30;
+        const action = changeMargin(value);
+        expect(action.type).toEqual(CHANGE_MARGIN);
+        expect(action.value).toEqual(value);
     });
 });
 
@@ -168,6 +177,18 @@ describe('deleteImprovementError', () => {
     });
 });
 
+describe('showAnalysis', () => {
+    it('Should return the action', () => {
+        const action = showAnalysis();
+        expect(action.type).toEqual(SHOW_ANALYSIS);
+    });
+});
+describe('hideAnalysis', () => {
+    it('Should return the action', () => {
+        const action = hideAnalysis();
+        expect(action.type).toEqual(HIDE_ANALYSIS);
+    });
+});
 
 
 

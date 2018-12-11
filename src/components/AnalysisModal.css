@@ -1,0 +1,95 @@
+.overlay {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    background-color: rgba(19, 30, 94, 0.6);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.analysis-modal h3 {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    text-align: left;
+}
+
+.analysis-modal {
+    border-radius: 10px;
+    border: 2px solid #0B3142;
+    background-color: #FCFDFF;
+    margin: 15% 5% 0 5%;
+    min-height: 300px;
+}
+
+.analysis-content {
+    margin: 0px 5%;
+}
+
+.analysis-content p {
+    text-align: center;
+}
+
+.analysis-modal .close-x {
+    height: 30px;
+    width: 30px;
+    padding: 0px;
+    position: fixed;
+    right: 5%;
+    background-color: #b65d52;
+    color: black;
+    font-weight: bolder;
+}
+
+.analysis-modal .close-x:hover {
+    background-image: none;
+    background-color: #c78279;
+}
+
+.left {
+    display: inline-block;
+    width: 50%
+}
+
+.right {
+    display: inline-block;
+    width: 50%
+}
+
+.left p {
+    text-align: right;
+}
+
+.right p {
+    text-align: left;
+}
+
+@media screen and (min-width: 320px) {
+    .analysis-modal h3 {
+        text-align: center;
+    }
+
+
+}
+
+@media screen and (min-width: 600px) {
+    .analysis-modal {
+        margin: 15% 10% 0 10%;
+    }
+
+    .close-x {
+        right: 10%;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .analysis-modal {
+        margin: 10% 15% 0 15%;
+    }
+
+    .close-x {
+        right: 15%;
+    }
+}

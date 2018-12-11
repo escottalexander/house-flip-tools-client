@@ -26,11 +26,52 @@ form button {
 .form-input {
     text-align: center;
     max-width: 247.5px;
-    margin: 10px 0px;
+    margin: 20px 0px;
+}
+
+input[type="file"] {
+    max-width: 181px;
 }
 
 @media screen and (min-width: 320px) {
-    .form-input {
+    .half .form-input {
         max-width: 100%;
+        text-align: right;
+        margin-right: 20%
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: row;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .buttons button {
+        margin: 20px;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .flex-container {
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        padding: 5% 5% 0 5%;
+    }
+
+    .half {
+        width: 50%;
+    }
+
+    .half .form-input {
+        text-align: right;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .flex-container {
+
+        padding: 5% 15% 0 10%;
     }
 }

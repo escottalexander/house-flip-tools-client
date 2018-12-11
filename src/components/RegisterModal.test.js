@@ -1,21 +1,21 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { RegisterPage } from './RegisterPage';
+import { RegisterModal } from './RegisterModal';
 import { Provider } from 'react-redux';
 import store from '../store';
 
-describe('<RegisterPage />', () => {
+describe('<RegisterModal />', () => {
     const mockFunction = jest.fn();
 
     it('renders without crashing', () => {
 
-        shallow(<RegisterPage handleSubmit={mockFunction} />)
+        shallow(<RegisterModal handleSubmit={mockFunction} />)
     });
 
     it('Renders correct fields', () => {
         const wrapper = shallow(
             <Provider store={store}>
-                <RegisterPage handleSubmit={mockFunction} />
+                <RegisterModal handleSubmit={mockFunction} />
             </Provider>
         ).dive()
 
