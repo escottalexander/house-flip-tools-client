@@ -59,7 +59,7 @@ export class PropertyView extends React.Component {
                             {property.roofType ? <p>Roof Material: {property.roofType}</p> : ""}
                         </div>
                     </section>
-                    {property.notes ? <p>Additional Notes: {property.notes}</p> : ""}
+                    {property.notes ? <p className="notes">Additional Notes: {property.notes}</p> : ""}
                     <button><Link to={`/dashboard/${property.slug}/edit`}>Edit Property Details</Link></button>
                     <button className="delete-btn" onClick={(event) => this.deleteProperty()}>Delete Property</button>
                     <h3>Planned Repairs and Improvements</h3>

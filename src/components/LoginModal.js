@@ -23,12 +23,14 @@ export function LoginModal(props) {
     return (
         <div className="overlay">
             <div className="LoginModal">
-                <button
-                    className="close-x"
-                    onClick={() => window.history.back()}>
-                    X
+                <div className="top-bar">
+                    <button
+                        className="close-x"
+                        onClick={() => window.history.back()}>
+                        X
                     </button>
-                <h2 className="header">Log In</h2>
+                    <h2 className="header">Log In</h2>
+                </div>
                 <form
                     className="login-form"
                     onSubmit={props.handleSubmit(values =>

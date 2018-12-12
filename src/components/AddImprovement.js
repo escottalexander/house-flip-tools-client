@@ -31,39 +31,41 @@ export class AddImprovement extends React.Component {
             );
         }
         return (
-            <form
-                className="AddImprovement"
-                onSubmit={this.props.handleSubmit(values =>
-                    this.onSubmit(values)
-                )}>
-                <h2 className="header">Add Improvement</h2>
-                {successMessage}
-                {errorMessage}
-                <Field
-                    name="name"
-                    type="text"
-                    component={Input}
-                    label="Improvement:"
-                    validate={[required]}
-                />
-                <Field
-                    name="cost"
-                    type="number"
-                    component={Input}
-                    label="Cost: $"
-                    validate={[required]}
-                />
-                <button
-                    type="submit"
-                    disabled={this.props.pristine || this.props.submitting}>
-                    Save
+            <section>
+                <form
+                    className="AddImprovement"
+                    onSubmit={this.props.handleSubmit(values =>
+                        this.onSubmit(values)
+                    )}>
+                    <h2 className="header">Add Improvement</h2>
+                    {successMessage}
+                    {errorMessage}
+                    <Field
+                        name="name"
+                        type="text"
+                        component={Input}
+                        label="Improvement:"
+                        validate={[required]}
+                    />
+                    <Field
+                        name="cost"
+                        type="number"
+                        component={Input}
+                        label="Cost: $"
+                        validate={[required]}
+                    />
+                    <button
+                        type="submit"
+                        disabled={this.props.pristine || this.props.submitting}>
+                        Save
                     </button>
-                <button
-                    type="button"
-                    onClick={() => window.history.back()}>
-                    Cancel
+                    <button
+                        type="button"
+                        onClick={() => window.history.back()}>
+                        Cancel
                 </button>
-            </form>)
+                </form>
+            </section>)
     }
 
 };
@@ -80,9 +82,7 @@ const mapStateToProps = (state, props) => {
     };
 };
 const formLink = reduxForm({
-    form: 'addImprovement',
-    // onSubmitFail: (errors, dispatch) =>
-    //     dispatch(focus('addImprovement', Object.keys(errors)[0]))
+    form: 'addImprovement'
 });
 
 

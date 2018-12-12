@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
-import { ScrollContext } from 'react-router-scroll-4'
+import { ScrollContext } from 'react-router-scroll-4';
+import { connect } from 'react-redux';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import LandingPage from './LandingPage';
@@ -11,8 +12,9 @@ import EditProperty from './EditProperty';
 import EditImprovement from './EditImprovement';
 import AddProperty from './AddProperty';
 import AddImprovement from './AddImprovement';
+import Loading from './Loading';
 
-export default class Main extends Component {
+export class Main extends Component {
   render() {
     return (
       <Router>
@@ -32,6 +34,7 @@ export default class Main extends Component {
               <Route exact path="/dashboard/:slug/edit" component={EditProperty} />
               <Route exact path="/dashboard/:slug/improvement/:id" component={EditImprovement} />
             </Switch>
+            {this.props.loading ? <Loading /> : ""}
             <Footer />
           </Fragment>
         </ScrollContext>
@@ -40,4 +43,16 @@ export default class Main extends Component {
   }
 }
 
+const mapStateToProps = (state, props) => {
 
+  const loading = state.reducer.loading === true || state.auth.loading === true;
+  //console.log(loading)
+
+  return {
+    loading
+  };
+};
+
+
+
+export default connect(mapStateToProps)(Main);

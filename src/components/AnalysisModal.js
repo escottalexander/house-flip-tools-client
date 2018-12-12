@@ -34,12 +34,14 @@ export class AnalysisModal extends React.Component {
 
             <div className="overlay">
                 <div className="analysis-modal">
-                    <button
-                        className="close-x"
-                        onClick={() => this.props.dispatch(this.props.hideAnalysis())}>
-                        X
+                    <div className="top-bar">
+                        <button
+                            className="close-x"
+                            onClick={() => this.props.dispatch(this.props.hideAnalysis())}>
+                            X
                     </button>
-                    <h3 className="header">{property.address}</h3>
+                        <h3 className="header">{property.address}</h3>
+                    </div>
                     <div className="analysis-content">
                         <div className="left">
                             <p>Cost of property: </p>

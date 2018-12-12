@@ -1,3 +1,4 @@
+import { clearAuthToken } from '../local-storage';
 import {
     SET_AUTH_TOKEN,
     CLEAR_AUTH,
@@ -20,6 +21,7 @@ export const authReducer = (state = initialState, action) => {
             authToken: action.authToken
         });
     } else if (action.type === CLEAR_AUTH) {
+        clearAuthToken()
         return Object.assign({}, state, {
             authToken: null,
             currentUser: null
