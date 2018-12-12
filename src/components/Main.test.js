@@ -10,7 +10,10 @@ describe('<Main />', () => {
 
 
   it('renders without crashing', () => {
-    shallow(<Main />)
+    shallow(
+      <Provider store={store}>
+        <Main />
+      </Provider>)
   });
 
   it('/ path should redirect to LandingPage', () => {
