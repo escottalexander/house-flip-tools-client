@@ -1,0 +1,9 @@
+.loading-modal {
+    border-radius: 10px;
+    border: 2px solid #0B3142;
+    background-color: #FCFDFF;
+    margin: 10% auto 0px auto;
+    min-height: 100px;
+    max-width: 300px;
+    text-align: center;
+}

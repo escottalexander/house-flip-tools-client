@@ -10,18 +10,23 @@
     bottom: 0;
 }
 
-.analysis-modal h3 {
+.analysis-modal .top-bar .header {
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
-    text-align: left;
+    padding: 20px;
+}
+
+.analysis-modal .top-bar {
+    position: relative;
 }
 
 .analysis-modal {
     border-radius: 10px;
     border: 2px solid #0B3142;
     background-color: #FCFDFF;
-    margin: 15% 5% 0 5%;
+    margin: 10% auto 0px auto;
     min-height: 300px;
+    max-width: 563px;
 }
 
 .analysis-content {
@@ -36,8 +41,8 @@
     height: 30px;
     width: 30px;
     padding: 0px;
-    position: fixed;
-    right: 5%;
+    position: absolute;
+    right: 10px;
     background-color: #b65d52;
     color: black;
     font-weight: bolder;
@@ -64,32 +69,4 @@
 
 .right p {
     text-align: left;
-}
-
-@media screen and (min-width: 320px) {
-    .analysis-modal h3 {
-        text-align: center;
-    }
-
-
-}
-
-@media screen and (min-width: 600px) {
-    .analysis-modal {
-        margin: 15% 10% 0 10%;
-    }
-
-    .close-x {
-        right: 10%;
-    }
-}
-
-@media screen and (min-width: 900px) {
-    .analysis-modal {
-        margin: 10% 15% 0 15%;
-    }
-
-    .close-x {
-        right: 15%;
-    }
 }

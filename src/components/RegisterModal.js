@@ -30,12 +30,14 @@ export function RegisterModal(props) {
     return (
         <div className="overlay">
             <div className="RegisterModal">
-                <button
-                    className="close-x"
-                    onClick={() => window.history.back()}>
-                    X
+                <div className="top-bar">
+                    <button
+                        className="close-x"
+                        onClick={() => window.history.back()}>
+                        X
                     </button>
-                <h2 className="header">Register</h2>
+                    <h1 className="header">Register</h1>
+                </div>
                 <form
                     onSubmit={props.handleSubmit(values => {
                         return props.dispatch(registerUser(values))

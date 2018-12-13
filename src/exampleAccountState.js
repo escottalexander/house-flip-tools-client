@@ -18,7 +18,21 @@ export const exampleProperties = [
         lotSize: 1.13,
         bedrooms: 3,
         bathrooms: 1.5,
-        stories: 2
+        stories: 2,
+        improvements: [
+            {
+                name: "Replace flooring",
+                cost: 10000
+            },
+            {
+                name: "Fresh paint throughout",
+                cost: 10000
+            },
+            {
+                name: "Replace roof",
+                cost: 10000
+            }
+        ]
     },
     {
         imgSrc: image2,
@@ -38,7 +52,21 @@ export const exampleProperties = [
         lotSize: 1.23,
         bedrooms: 3,
         bathrooms: 1.5,
-        stories: 2
+        stories: 2,
+        improvements: [
+            {
+                name: "Replace flooring",
+                cost: 10000
+            },
+            {
+                name: "Fresh paint throughout",
+                cost: 10000
+            },
+            {
+                name: "Replace roof",
+                cost: 10000
+            }
+        ]
     }
 ];
 

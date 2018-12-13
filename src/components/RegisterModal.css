@@ -2,17 +2,19 @@
     border-radius: 10px;
     border: 2px solid #0B3142;
     background-color: #FCFDFF;
-    margin: 15% 5% 0 5%;
+    margin: 10% auto 0 auto;
     min-height: 300px;
     text-align: center;
+    max-width: 563px;
 }
 
 .RegisterModal .form-input {
-    text-align: center;
+    text-align: right;
     max-width: 100%;
+    padding-right: 20%;
 }
 
-.RegisterModal h2 {
+.RegisterModal h1 {
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
 }
@@ -29,12 +31,16 @@
     text-decoration-line: underline;
 }
 
+.RegisterModal .top-bar {
+    position: relative;
+}
+
 .RegisterModal .close-x {
     height: 30px;
     width: 30px;
     padding: 0px;
-    position: fixed;
-    right: 5%;
+    position: absolute;
+    right: 10px;
     background-color: #b65d52;
     color: black;
     font-weight: bolder;

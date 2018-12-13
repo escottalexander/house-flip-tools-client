@@ -21,13 +21,13 @@ export class Dashboard extends React.Component {
         return (
             <main className="Dashboard">
 
-                <h2 className="header">Properties</h2>
+                <h1 className="header">Properties</h1>
                 <div className="properties">
                     {properties}
                     {properties.length === 0 ?
                         <h3>It looks like you don't have any properties. Click the buttopn below to add one.</h3>
                         :
-                        <h4>Click the button below to add a new property.</h4>
+                        <h3>Click the button below to add a new property.</h3>
                     }
                     <button><Link to='/dashboard/add'>Add Property</Link></button>
                 </div>

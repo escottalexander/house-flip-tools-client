@@ -25,6 +25,14 @@ button a {
     text-align: center;
 }
 
+.short-desc {
+    /* padding-left: 10%;
+    padding-right: 10%; */
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+}
+
 .view-property {
     margin: 20px auto 75px auto;
     display: block;
