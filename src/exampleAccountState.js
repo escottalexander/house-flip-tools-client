@@ -70,17 +70,4 @@ export const exampleProperties = [
     }
 ];
 
-export const exampleImprovements = [
-    {
-        name: "Replace flooring",
-        cost: 10000
-    },
-    {
-        name: "Fresh paint throughout",
-        cost: 10000
-    },
-    {
-        name: "Replace roof",
-        cost: 10000
-    }
-]
+
