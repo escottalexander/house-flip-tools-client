@@ -8,10 +8,10 @@ You can visit a live version of this app here: [House Flip Tools](https://murmur
 1. Create an account and login or check out the example account.
 ![Landing page](ReadMeScreenshots/LandingPage.png)
 
-2. View a specific properties details by clicking "View Property", If you don't have any properties, click "Add property".
+2. View a specific property's details by clicking "View Property", If you don't have any properties, click "Add property".
 ![Dashboard](ReadMeScreenshots/Dashboard.png)
 
-3. After you have edited the property details and added and repairs or improvements, click "Analyze My Property" to see your estimate.
+3. After you have edited the property details and added any repairs or improvements, click "Analyze My Property" to see your estimate.
 ![Analyze](ReadMeScreenshots/Analyze.png)
 
 4. While viewing the analysis, you can adjust the profit margin to your desired percentage.
