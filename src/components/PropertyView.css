@@ -7,6 +7,12 @@
      padding: 0px 3%;
  }
 
+ .notes {
+     margin-left: auto;
+     margin-right: auto;
+     max-width: 600px;
+ }
+
  .property-info p {
      padding-left: 20%;
  }

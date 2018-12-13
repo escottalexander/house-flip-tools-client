@@ -6,11 +6,13 @@ import { clearAuth } from '../actions/auth'
 
 export function Logout(props) {
     props.dispatch(clearAuth())
-    return <Redirect to="/home" />;
+    return < Redirect to="/home" />;
 };
 
 const mapStateToProps = (state) => ({
     loggedIn: state.auth.currentUser !== null
+
+
 });
 
 
