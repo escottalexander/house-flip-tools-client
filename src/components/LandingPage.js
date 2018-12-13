@@ -6,7 +6,7 @@ import { getUserProperties, deleteProperty, addImprovement, addProperty, example
 import { login } from '../actions/auth';
 import LoginModal from './LoginModal'
 import RegisterModal from './RegisterModal'
-import { exampleProperties, exampleImprovements } from '../exampleAccountState';
+import { exampleProperties } from '../exampleAccountState';
 
 export class LandingPage extends React.Component {
     exampleAccountSetup() {
