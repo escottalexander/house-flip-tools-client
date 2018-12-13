@@ -191,9 +191,7 @@ const mapStateToProps = (state, props) => {
 };
 
 const formLink = reduxForm({
-    form: 'addProperty',
-    // onSubmitFail: (errors, dispatch) =>
-    //     dispatch(focus('addProperty', Object.keys(errors)[0]))
+    form: 'addProperty'
 });
 
 
