@@ -31,13 +31,13 @@ export class AddImprovement extends React.Component {
             );
         }
         return (
-            <section>
+            <main>
                 <form
                     className="AddImprovement"
                     onSubmit={this.props.handleSubmit(values =>
                         this.onSubmit(values)
                     )}>
-                    <h2 className="header">Add Improvement</h2>
+                    <h1 className="header">Add Improvement</h1>
                     {successMessage}
                     {errorMessage}
                     <Field
@@ -65,7 +65,7 @@ export class AddImprovement extends React.Component {
                         Cancel
                 </button>
                 </form>
-            </section>)
+            </main>)
     }
 
 };

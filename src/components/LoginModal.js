@@ -29,7 +29,7 @@ export function LoginModal(props) {
                         onClick={() => window.history.back()}>
                         X
                     </button>
-                    <h2 className="header">Log In</h2>
+                    <h1 className="header">Log In</h1>
                 </div>
                 <form
                     className="login-form"

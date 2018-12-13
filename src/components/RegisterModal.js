@@ -36,7 +36,7 @@ export function RegisterModal(props) {
                         onClick={() => window.history.back()}>
                         X
                     </button>
-                    <h2 className="header">Register</h2>
+                    <h1 className="header">Register</h1>
                 </div>
                 <form
                     onSubmit={props.handleSubmit(values => {

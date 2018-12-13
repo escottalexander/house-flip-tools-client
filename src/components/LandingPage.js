@@ -31,7 +31,7 @@ export class LandingPage extends React.Component {
         }
         return (
             <main className="LandingPage">
-                <h2 className="header">House Flip Tools</h2>
+                <h1 className="header">House Flip Tools</h1>
                 <div className="content">
                     <img className="main-img" src="./housefliptools.png" alt="A before and after of a house that has been flipped." />
                     <p>House Flip Tools is a useful house flipping cost analyzer that aims to help you discover the financial feasibility of a "flip".</p>

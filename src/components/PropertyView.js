@@ -36,7 +36,7 @@ export class PropertyView extends React.Component {
         return (
             <main className="PropertyView">
                 <div className="header">
-                    <h2 className="address-one">{property.address}</h2>
+                    <h1 className="address-one">{property.address}</h1>
                     <p className="address-two">{property.city}, {property.state} {property.zip}</p>
                 </div>
                 <div className="ind-property">
@@ -62,7 +62,7 @@ export class PropertyView extends React.Component {
                     {property.notes ? <p className="notes">Additional Notes: {property.notes}</p> : ""}
                     <button><Link to={`/dashboard/${property.slug}/edit`}>Edit Property Details</Link></button>
                     <button className="delete-btn" onClick={(event) => this.deleteProperty()}>Delete Property</button>
-                    <h3>Planned Repairs and Improvements</h3>
+                    <h2>Planned Repairs and Improvements</h2>
                     {improvements}
                     <button><Link to={`/dashboard/${property.slug}/add-improvement`}>Add Improvement</Link></button>
 

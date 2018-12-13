@@ -40,7 +40,7 @@ export class AnalysisModal extends React.Component {
                             onClick={() => this.props.dispatch(this.props.hideAnalysis())}>
                             X
                     </button>
-                        <h3 className="header">{property.address}</h3>
+                        <h1 className="header">{property.address}</h1>
                     </div>
                     <div className="analysis-content">
                         <div className="left">
@@ -49,7 +49,7 @@ export class AnalysisModal extends React.Component {
                         <div className="right">
                             <p>${prettify(property.price)}</p>
                         </div>
-                        <h4>Improvements</h4>
+                        <h2>Improvements</h2>
                         {improvements}
 
                         <h4>That works out to be ${prettify(totalCost)} in total.</h4>

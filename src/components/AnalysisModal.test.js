@@ -16,7 +16,7 @@ describe('<AnalysisModal />', () => {
 
     it('Renders correct property information', () => {
         const wrapper = shallow(<AnalysisModal property={data} prettify={() => 'any value'} match={params} getUserProperties={() => 'any value'} dispatch={() => 'any value'} />)
-        expect(wrapper.find('h3').text()).toEqual(data.address)
+        expect(wrapper.find('h1').text()).toEqual(data.address)
     });
 
 })
