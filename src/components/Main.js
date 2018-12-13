@@ -46,7 +46,6 @@ export class Main extends Component {
 const mapStateToProps = (state, props) => {
 
   const loading = state.reducer.loading === true || state.auth.loading === true;
-  //console.log(loading)
 
   return {
     loading
